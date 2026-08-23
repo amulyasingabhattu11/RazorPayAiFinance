@@ -1,0 +1,114 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Interactive Audit Report</title>
+    <link rel="stylesheet" href="./styles.css">
+  </head>
+  <body>
+    <main class="audit-page">
+      <header class="audit-hero">
+        <div>
+          <p class="eyebrow">AI Finance Controller</p>
+          <h1>Interactive audit report</h1>
+          <p id="auditSubline">Loading output/report.json</p>
+        </div>
+        <div class="top-actions">
+          <a class="report-link" href="./index.html">Dashboard</a>
+          <a class="report-link" href="../output/audit_report.md" download>Download markdown</a>
+        </div>
+      </header>
+
+      <section class="audit-summary" id="auditSummary" aria-label="Audit summary"></section>
+
+      <section class="audit-layout">
+        <aside class="audit-toc" aria-label="Report sections">
+          <a href="#kpis">KPI Summary</a>
+          <a href="#breakdown">Exception Breakdown</a>
+          <a href="#exceptions">Exception Register</a>
+          <a href="#worked">Worked Example</a>
+          <a href="#architecture">Architecture</a>
+        </aside>
+
+        <div class="audit-content">
+          <section class="audit-section" id="kpis">
+            <div class="section-heading">
+              <div>
+                <span>KPI Summary</span>
+                <h2>Ground-truth scored run</h2>
+              </div>
+              <strong id="runBadge">Loading</strong>
+            </div>
+            <div class="audit-table-wrap">
+              <table>
+                <thead>
+                  <tr>
+                    <th>Metric</th>
+                    <th>Agent result</th>
+                    <th>Ground truth</th>
+                    <th>Signal</th>
+                  </tr>
+                </thead>
+                <tbody id="kpiRows"></tbody>
+              </table>
+            </div>
+          </section>
+
+          <section class="audit-section" id="breakdown">
+            <div class="section-heading">
+              <div>
+                <span>Exception Breakdown</span>
+                <h2>Root-cause coverage and case mix</h2>
+              </div>
+              <strong id="coverageBadge">--</strong>
+            </div>
+            <div class="audit-breakdown" id="auditBreakdown"></div>
+          </section>
+
+          <section class="audit-section" id="exceptions">
+            <div class="section-heading">
+              <div>
+                <span>Exception Register</span>
+                <h2>Reviewable evidence by transaction</h2>
+              </div>
+              <div class="search-box audit-search">
+                <span aria-hidden="true">/</span>
+                <input id="auditSearch" type="search" placeholder="Search exceptions">
+              </div>
+            </div>
+            <div class="exception-stack" id="exceptionStack"></div>
+          </section>
+
+          <section class="audit-section" id="worked">
+            <div class="section-heading">
+              <div>
+                <span>Worked Example</span>
+                <h2>A correctly refused force-match</h2>
+              </div>
+            </div>
+            <div class="worked-example" id="workedExample"></div>
+          </section>
+
+          <section class="audit-section" id="architecture">
+            <div class="section-heading">
+              <div>
+                <span>Architecture</span>
+                <h2>Deterministic first, agent only for ambiguity</h2>
+              </div>
+            </div>
+            <div class="flow">
+              <div>Batch Loader</div>
+              <div>Deterministic Matcher</div>
+              <div>Reasoning Agent</div>
+              <div>Exception Classifier</div>
+              <div>Self-Report Writer</div>
+            </div>
+          </section>
+        </div>
+      </section>
+    </main>
+
+    <script src="./audit.js"></script>
+  </body>
+</html>
