@@ -1,0 +1,119 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>AI Finance Controller</title>
+    <link rel="stylesheet" href="./styles.css">
+  </head>
+  <body>
+    <div class="shell">
+      <aside class="rail" aria-label="Primary">
+        <div class="brand">
+          <div class="brand-mark">R</div>
+          <div>
+            <strong>AI Finance Controller</strong>
+            <span>RazorPay Track 04</span>
+          </div>
+        </div>
+
+        <nav class="nav-tabs" aria-label="Views">
+          <button class="nav-tab is-active" data-view="exceptions" type="button">
+            <span class="tab-icon">!</span>
+            Exceptions
+          </button>
+          <button class="nav-tab" data-view="matches" type="button">
+            <span class="tab-icon">=</span>
+            Matches
+          </button>
+          <button class="nav-tab" data-view="audit" type="button">
+            <span class="tab-icon">#</span>
+            Audit
+          </button>
+        </nav>
+
+        <div class="rail-status">
+          <span>Run</span>
+          <strong id="runId">Loading</strong>
+          <small id="generatedAt">Waiting for report</small>
+        </div>
+      </aside>
+
+      <main class="workspace">
+        <header class="topbar">
+          <div>
+            <p class="eyebrow">Payments reconciliation loop</p>
+            <h1>Books, settlements, and bank cash in one review queue</h1>
+          </div>
+          <div class="top-actions">
+            <button class="icon-button" id="refreshBtn" type="button" title="Reload report" aria-label="Reload report">R</button>
+            <a class="report-link" href="../output/audit_report.md" target="_blank" rel="noreferrer">Audit report</a>
+          </div>
+        </header>
+
+        <section class="metrics-grid" id="metricsGrid" aria-label="Run metrics"></section>
+
+        <section class="analysis-band" aria-label="Run analysis">
+          <div class="score-panel">
+            <div class="score-ring" id="scoreRing" aria-label="Match rate">
+              <span id="scoreValue">--</span>
+            </div>
+            <div>
+              <p class="panel-label">Auto-match rate</p>
+              <strong id="scoreSummary">Loading run</strong>
+              <span id="scoreDetail">Fetching output/report.json</span>
+            </div>
+          </div>
+          <div class="breakdown-panel">
+            <div class="panel-heading">
+              <span>Exception mix</span>
+              <strong id="exceptionTotal">--</strong>
+            </div>
+            <div class="bar-list" id="breakdownBars"></div>
+          </div>
+        </section>
+
+        <section class="controls-band">
+          <div class="search-box">
+            <span aria-hidden="true">/</span>
+            <input id="searchInput" type="search" placeholder="Search transaction, exception, break type, reason">
+          </div>
+          <div class="segmented" id="priorityFilter" aria-label="Priority filter">
+            <button class="is-active" type="button" data-filter="ALL">All</button>
+            <button type="button" data-filter="HIGH">High</button>
+            <button type="button" data-filter="MEDIUM">Medium</button>
+            <button type="button" data-filter="LOW">Low</button>
+          </div>
+          <select id="typeFilter" aria-label="Break type filter">
+            <option value="ALL">All break types</option>
+          </select>
+        </section>
+
+        <section class="data-region">
+          <div class="table-toolbar">
+            <div>
+              <strong id="tableTitle">Exceptions</strong>
+              <span id="rowCount">0 rows</span>
+            </div>
+            <button class="text-button" id="clearFilters" type="button">Clear filters</button>
+          </div>
+          <div class="table-wrap">
+            <table>
+              <thead id="tableHead"></thead>
+              <tbody id="tableBody"></tbody>
+            </table>
+          </div>
+        </section>
+      </main>
+
+      <aside class="detail-pane" id="detailPane" aria-live="polite">
+        <div class="empty-detail">
+          <span>Select a row</span>
+          <strong>Decision evidence appears here</strong>
+        </div>
+      </aside>
+    </div>
+
+    <script src="./app.js"></script>
+  </body>
+</html>

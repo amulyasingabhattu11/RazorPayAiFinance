@@ -1,6 +1,6 @@
 # AI Finance Controller — Audit Report
-**Run ID:** `RUN-7A95A087`  
-**Generated:** 2026-08-23 14:02:16 UTC  
+**Run ID:** `RUN-6B658F06`  
+**Generated:** 2026-08-23 15:53:06 UTC  
 **Elapsed:** 0.01s
 
 ---
@@ -38,31 +38,31 @@
 
 | ID | Txn ID | Priority | Break Type | Root Cause Hypothesis |
 |----|--------|----------|------------|----------------------|
-| EXC-0019 | `TXN16E6AFCAE5` | **HIGH** | MISSING_UTR | Gateway settlement record exists but UTR reference is empty. Cannot cross-reference with bank statement without a UTR.… |
-| EXC-0025 | `TXN2C02A96860` | **HIGH** | NO_GATEWAY_RECORD | No gateway settlement record found for this transaction. Settlement may not have been processed or records are missing.… |
-| EXC-0023 | `TXN428BCCF424` | **HIGH** | NO_GATEWAY_RECORD | No gateway settlement record found for this transaction. Settlement may not have been processed or records are missing.… |
-| EXC-0016 | `TXN42B9FF9674` | **HIGH** | MISSING_UTR | Gateway settlement record exists but UTR reference is empty. Cannot cross-reference with bank statement without a UTR.… |
-| EXC-0018 | `TXN6A3C009076` | **HIGH** | MISSING_UTR | Gateway settlement record exists but UTR reference is empty. Cannot cross-reference with bank statement without a UTR.… |
-| EXC-0017 | `TXN7CA0F4E907` | **HIGH** | MISSING_UTR | Gateway settlement record exists but UTR reference is empty. Cannot cross-reference with bank statement without a UTR.… |
-| EXC-0001 | `TXN92E04BB219` | **HIGH** | DUPLICATE_SETTLEMENT | Transaction TXN92E04BB219 has 2 gateway settlement records: SETBD92D92449, SETF90D537C3D. Only one settlement is expecte… |
-| EXC-0024 | `TXNAEC972138E` | **HIGH** | NO_GATEWAY_RECORD | No gateway settlement record found for this transaction. Settlement may not have been processed or records are missing.… |
-| EXC-0003 | `TXNB05B330978` | **HIGH** | DUPLICATE_SETTLEMENT | Transaction TXNB05B330978 has 2 gateway settlement records: SETAFB99EB025, SET0AAFF08E69. Only one settlement is expecte… |
-| EXC-0015 | `TXNF820B7E694` | **HIGH** | MISSING_UTR | Gateway settlement record exists but UTR reference is empty. Cannot cross-reference with bank statement without a UTR.… |
-| EXC-0004 | `TXNFA7D7A0CB1` | **HIGH** | DUPLICATE_SETTLEMENT | Transaction TXNFA7D7A0CB1 has 2 gateway settlement records: SET436C3CDB24, SET26C6E40FBB. Only one settlement is expecte… |
-| EXC-0002 | `TXNFD224222FE` | **HIGH** | DUPLICATE_SETTLEMENT | Transaction TXNFD224222FE has 2 gateway settlement records: SET9062F290DC, SET7F4D00C27E. Only one settlement is expecte… |
-| EXC-0021 | `TXN0C028D39E5` | **MEDIUM** | PARTIAL_REFUND | Settlement amount ₹14359.8 is 45.0% of ledger amount ₹31894.78. Consistent with a partial refund. Refund record should b… |
-| EXC-0006 | `TXN20974E26DE` | **MEDIUM** | TIMING_MISMATCH | Bank value_date is 2.0 days after gateway settlement_date. Expected T+1 (≤24 h). Possible causes: bank holiday, batch pr… |
-| EXC-0012 | `TXN2BCD14E3ED` | **MEDIUM** | TIMING_MISMATCH | Bank value_date is 2.0 days after gateway settlement_date. Expected T+1 (≤24 h). Possible causes: bank holiday, batch pr… |
-| EXC-0011 | `TXN36B37B8CFC` | **MEDIUM** | TIMING_MISMATCH | Bank value_date is 2.0 days after gateway settlement_date. Expected T+1 (≤24 h). Possible causes: bank holiday, batch pr… |
-| EXC-0013 | `TXN47C363E5E2` | **MEDIUM** | TIMING_MISMATCH | Bank value_date is 2.0 days after gateway settlement_date. Expected T+1 (≤24 h). Possible causes: bank holiday, batch pr… |
-| EXC-0005 | `TXN4BBC148204` | **MEDIUM** | TIMING_MISMATCH | Bank value_date is 2.0 days after gateway settlement_date. Expected T+1 (≤24 h). Possible causes: bank holiday, batch pr… |
-| EXC-0022 | `TXN85BFE5450D` | **MEDIUM** | PARTIAL_REFUND | Settlement amount ₹22032.18 is 48.5% of ledger amount ₹45453.87. Consistent with a partial refund. Refund record should … |
-| EXC-0010 | `TXN91E32E6D9C` | **MEDIUM** | TIMING_MISMATCH | Bank value_date is 2.0 days after gateway settlement_date. Expected T+1 (≤24 h). Possible causes: bank holiday, batch pr… |
-| EXC-0008 | `TXN9980F9C98D` | **MEDIUM** | TIMING_MISMATCH | Bank value_date is 2.0 days after gateway settlement_date. Expected T+1 (≤24 h). Possible causes: bank holiday, batch pr… |
-| EXC-0007 | `TXNB81665ED74` | **MEDIUM** | TIMING_MISMATCH | Bank value_date is 2.0 days after gateway settlement_date. Expected T+1 (≤24 h). Possible causes: bank holiday, batch pr… |
-| EXC-0020 | `TXNBD93DC525A` | **MEDIUM** | PARTIAL_REFUND | Settlement amount ₹6367.05 is 44.1% of ledger amount ₹14446.94. Consistent with a partial refund. Refund record should b… |
-| EXC-0014 | `TXNDCF4E9BC8B` | **MEDIUM** | TIMING_MISMATCH | Bank value_date is 2.0 days after gateway settlement_date. Expected T+1 (≤24 h). Possible causes: bank holiday, batch pr… |
-| EXC-0009 | `TXNF4E4AC1EE1` | **MEDIUM** | TIMING_MISMATCH | Bank value_date is 2.0 days after gateway settlement_date. Expected T+1 (≤24 h). Possible causes: bank holiday, batch pr… |
+| EXC-0023 | `TXN0615C54DBB` | **HIGH** | NO_GATEWAY_RECORD | No gateway settlement record found for this transaction. Settlement may not have been processed or records are missing.… |
+| EXC-0001 | `TXN07F7E1E50E` | **HIGH** | DUPLICATE_SETTLEMENT | Transaction TXN07F7E1E50E has 2 gateway settlement records: SET4DF6BF9C39, SET49A136FCF4. Only one settlement is expecte… |
+| EXC-0018 | `TXN0802F0066E` | **HIGH** | MISSING_UTR | Gateway settlement record exists but UTR reference is empty. Cannot cross-reference with bank statement without a UTR.… |
+| EXC-0002 | `TXN178624C3CB` | **HIGH** | DUPLICATE_SETTLEMENT | Transaction TXN178624C3CB has 2 gateway settlement records: SET898E9A3583, SETD3D7AC1121. Only one settlement is expecte… |
+| EXC-0016 | `TXN218FE81183` | **HIGH** | MISSING_UTR | Gateway settlement record exists but UTR reference is empty. Cannot cross-reference with bank statement without a UTR.… |
+| EXC-0024 | `TXN2EA5E4B5D1` | **HIGH** | NO_GATEWAY_RECORD | No gateway settlement record found for this transaction. Settlement may not have been processed or records are missing.… |
+| EXC-0003 | `TXN6784E3EBBB` | **HIGH** | DUPLICATE_SETTLEMENT | Transaction TXN6784E3EBBB has 2 gateway settlement records: SET7416737257, SETFF0CCEAD90. Only one settlement is expecte… |
+| EXC-0015 | `TXN6DF68E0E52` | **HIGH** | MISSING_UTR | Gateway settlement record exists but UTR reference is empty. Cannot cross-reference with bank statement without a UTR.… |
+| EXC-0004 | `TXNAFF61CC4E7` | **HIGH** | DUPLICATE_SETTLEMENT | Transaction TXNAFF61CC4E7 has 2 gateway settlement records: SETFAC8A567F9, SET6C4C6D2674. Only one settlement is expecte… |
+| EXC-0019 | `TXNC8736CE11C` | **HIGH** | MISSING_UTR | Gateway settlement record exists but UTR reference is empty. Cannot cross-reference with bank statement without a UTR.… |
+| EXC-0017 | `TXND4C80FB64B` | **HIGH** | MISSING_UTR | Gateway settlement record exists but UTR reference is empty. Cannot cross-reference with bank statement without a UTR.… |
+| EXC-0025 | `TXNECB48BF6F8` | **HIGH** | NO_GATEWAY_RECORD | No gateway settlement record found for this transaction. Settlement may not have been processed or records are missing.… |
+| EXC-0011 | `TXN0D6392AD5E` | **MEDIUM** | TIMING_MISMATCH | Bank value_date is 2.0 days after gateway settlement_date. Expected T+1 (≤24 h). Possible causes: bank holiday, batch pr… |
+| EXC-0006 | `TXN28B646595D` | **MEDIUM** | TIMING_MISMATCH | Bank value_date is 2.0 days after gateway settlement_date. Expected T+1 (≤24 h). Possible causes: bank holiday, batch pr… |
+| EXC-0005 | `TXN2E1C48D777` | **MEDIUM** | TIMING_MISMATCH | Bank value_date is 2.0 days after gateway settlement_date. Expected T+1 (≤24 h). Possible causes: bank holiday, batch pr… |
+| EXC-0021 | `TXN6075A884E9` | **MEDIUM** | PARTIAL_REFUND | Settlement amount ₹14359.8 is 45.0% of ledger amount ₹31894.78. Consistent with a partial refund. Refund record should b… |
+| EXC-0013 | `TXN705E6879C7` | **MEDIUM** | TIMING_MISMATCH | Bank value_date is 2.0 days after gateway settlement_date. Expected T+1 (≤24 h). Possible causes: bank holiday, batch pr… |
+| EXC-0020 | `TXN8B8BD37A0C` | **MEDIUM** | PARTIAL_REFUND | Settlement amount ₹6367.05 is 44.1% of ledger amount ₹14446.94. Consistent with a partial refund. Refund record should b… |
+| EXC-0008 | `TXNB797A782F9` | **MEDIUM** | TIMING_MISMATCH | Bank value_date is 2.0 days after gateway settlement_date. Expected T+1 (≤24 h). Possible causes: bank holiday, batch pr… |
+| EXC-0009 | `TXNC1B5F18908` | **MEDIUM** | TIMING_MISMATCH | Bank value_date is 2.0 days after gateway settlement_date. Expected T+1 (≤24 h). Possible causes: bank holiday, batch pr… |
+| EXC-0012 | `TXNC24D65703B` | **MEDIUM** | TIMING_MISMATCH | Bank value_date is 2.0 days after gateway settlement_date. Expected T+1 (≤24 h). Possible causes: bank holiday, batch pr… |
+| EXC-0007 | `TXNE060785672` | **MEDIUM** | TIMING_MISMATCH | Bank value_date is 2.0 days after gateway settlement_date. Expected T+1 (≤24 h). Possible causes: bank holiday, batch pr… |
+| EXC-0014 | `TXNE5E5F6E4DB` | **MEDIUM** | TIMING_MISMATCH | Bank value_date is 2.0 days after gateway settlement_date. Expected T+1 (≤24 h). Possible causes: bank holiday, batch pr… |
+| EXC-0022 | `TXNE8C21BCA45` | **MEDIUM** | PARTIAL_REFUND | Settlement amount ₹22032.18 is 48.5% of ledger amount ₹45453.87. Consistent with a partial refund. Refund record should … |
+| EXC-0010 | `TXNEC12CE2AD9` | **MEDIUM** | TIMING_MISMATCH | Bank value_date is 2.0 days after gateway settlement_date. Expected T+1 (≤24 h). Possible causes: bank holiday, batch pr… |
 
 ---
 
@@ -71,18 +71,18 @@
 The following shows a case where the agent **correctly refused** to force-match
 a record, instead surfacing it as `REVIEW_REQUIRED` or `UNMATCHED`:
 
-**Transaction:** `TXN0C028D39E5`  
-**Break Type:** `PARTIAL_REFUND`  
+**Transaction:** `TXN0D6392AD5E`  
+**Break Type:** `TIMING_MISMATCH`  
 **Priority:** `MEDIUM`  
 **Agent Status:** `REVIEW_REQUIRED`  
-**Confidence:** `0.80`  
+**Confidence:** `0.75`  
 
 **Root Cause Hypothesis:**
-> Settlement amount ₹14359.8 is 45.0% of ledger amount ₹31894.78. Consistent with a partial refund. Refund record should be verified against the transaction status.
+> Bank value_date is 2.0 days after gateway settlement_date. Expected T+1 (≤24 h). Possible causes: bank holiday, batch processing lag, or timezone recording mismatch.
 
 **Audit Trail:**
 ```
-STUB_AGENT: Partial refund detected. Settlement is 45.0% of ledger (₹14359.8 vs ₹31894.78). REVIEW_REQUIRED (confidence=0.8).
+STUB_AGENT: Timing mismatch. Value date is 2.0 days after settlement. REVIEW_REQUIRED (confidence=0.75).
 ```
 
 **Why this matters:** A naive matcher might have forced this to MATCHED

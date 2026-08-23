@@ -1,5 +1,5 @@
 {
-  "run_id": "RUN-7A95A087",
+  "run_id": "RUN-6B658F06",
   "total_records": 100,
   "matched_count": 75,
   "review_required_count": 13,
@@ -16,38 +16,8 @@
   "avg_confidence_matched": 0.98,
   "exceptions": [
     {
-      "exception_id": "EXC-0019",
-      "txn_id": "TXN16E6AFCAE5",
-      "break_type": "MISSING_UTR",
-      "root_cause_hypothesis": "Gateway settlement record exists but UTR reference is empty. Cannot cross-reference with bank statement without a UTR.",
-      "priority": "HIGH",
-      "reason_codes": [
-        "MISSING_UTR"
-      ],
-      "evidence": {
-        "txn_id": "TXN16E6AFCAE5",
-        "settlement_id": "SET2A53915814",
-        "utr_ref": "",
-        "settlement_amount": 22190.14
-      }
-    },
-    {
-      "exception_id": "EXC-0025",
-      "txn_id": "TXN2C02A96860",
-      "break_type": "NO_GATEWAY_RECORD",
-      "root_cause_hypothesis": "No gateway settlement record found for this transaction. Settlement may not have been processed or records are missing.",
-      "priority": "HIGH",
-      "reason_codes": [
-        "NO_GATEWAY_RECORD"
-      ],
-      "evidence": {
-        "txn_id": "TXN2C02A96860",
-        "settlement_count": 0
-      }
-    },
-    {
       "exception_id": "EXC-0023",
-      "txn_id": "TXN428BCCF424",
+      "txn_id": "TXN0615C54DBB",
       "break_type": "NO_GATEWAY_RECORD",
       "root_cause_hypothesis": "No gateway settlement record found for this transaction. Settlement may not have been processed or records are missing.",
       "priority": "HIGH",
@@ -55,71 +25,23 @@
         "NO_GATEWAY_RECORD"
       ],
       "evidence": {
-        "txn_id": "TXN428BCCF424",
+        "txn_id": "TXN0615C54DBB",
         "settlement_count": 0
-      }
-    },
-    {
-      "exception_id": "EXC-0016",
-      "txn_id": "TXN42B9FF9674",
-      "break_type": "MISSING_UTR",
-      "root_cause_hypothesis": "Gateway settlement record exists but UTR reference is empty. Cannot cross-reference with bank statement without a UTR.",
-      "priority": "HIGH",
-      "reason_codes": [
-        "MISSING_UTR"
-      ],
-      "evidence": {
-        "txn_id": "TXN42B9FF9674",
-        "settlement_id": "SETE8FF877EEC",
-        "utr_ref": "",
-        "settlement_amount": 4126.41
-      }
-    },
-    {
-      "exception_id": "EXC-0018",
-      "txn_id": "TXN6A3C009076",
-      "break_type": "MISSING_UTR",
-      "root_cause_hypothesis": "Gateway settlement record exists but UTR reference is empty. Cannot cross-reference with bank statement without a UTR.",
-      "priority": "HIGH",
-      "reason_codes": [
-        "MISSING_UTR"
-      ],
-      "evidence": {
-        "txn_id": "TXN6A3C009076",
-        "settlement_id": "SET59D103F5C2",
-        "utr_ref": "",
-        "settlement_amount": 44023.88
-      }
-    },
-    {
-      "exception_id": "EXC-0017",
-      "txn_id": "TXN7CA0F4E907",
-      "break_type": "MISSING_UTR",
-      "root_cause_hypothesis": "Gateway settlement record exists but UTR reference is empty. Cannot cross-reference with bank statement without a UTR.",
-      "priority": "HIGH",
-      "reason_codes": [
-        "MISSING_UTR"
-      ],
-      "evidence": {
-        "txn_id": "TXN7CA0F4E907",
-        "settlement_id": "SET300D60ADFB",
-        "utr_ref": "",
-        "settlement_amount": 7056.6
       }
     },
     {
       "exception_id": "EXC-0001",
-      "txn_id": "TXN92E04BB219",
+      "txn_id": "TXN07F7E1E50E",
       "break_type": "DUPLICATE_SETTLEMENT",
-      "root_cause_hypothesis": "Transaction TXN92E04BB219 has 2 gateway settlement records: SETBD92D92449, SETF90D537C3D. Only one settlement is expected.",
+      "root_cause_hypothesis": "Transaction TXN07F7E1E50E has 2 gateway settlement records: SET4DF6BF9C39, SET49A136FCF4. Only one settlement is expected.",
       "priority": "HIGH",
       "reason_codes": [
         "DUPLICATE_SETTLEMENT"
       ],
       "evidence": {
         "settlement_ids": [
-          "SETBD92D92449",
-          "SETF90D537C3D"
+          "SET4DF6BF9C39",
+          "SET49A136FCF4"
         ],
         "amounts": [
           30778.05,
@@ -128,8 +50,60 @@
       }
     },
     {
+      "exception_id": "EXC-0018",
+      "txn_id": "TXN0802F0066E",
+      "break_type": "MISSING_UTR",
+      "root_cause_hypothesis": "Gateway settlement record exists but UTR reference is empty. Cannot cross-reference with bank statement without a UTR.",
+      "priority": "HIGH",
+      "reason_codes": [
+        "MISSING_UTR"
+      ],
+      "evidence": {
+        "txn_id": "TXN0802F0066E",
+        "settlement_id": "SETA6FB4A0945",
+        "utr_ref": "",
+        "settlement_amount": 44023.88
+      }
+    },
+    {
+      "exception_id": "EXC-0002",
+      "txn_id": "TXN178624C3CB",
+      "break_type": "DUPLICATE_SETTLEMENT",
+      "root_cause_hypothesis": "Transaction TXN178624C3CB has 2 gateway settlement records: SET898E9A3583, SETD3D7AC1121. Only one settlement is expected.",
+      "priority": "HIGH",
+      "reason_codes": [
+        "DUPLICATE_SETTLEMENT"
+      ],
+      "evidence": {
+        "settlement_ids": [
+          "SET898E9A3583",
+          "SETD3D7AC1121"
+        ],
+        "amounts": [
+          40946.65,
+          40946.65
+        ]
+      }
+    },
+    {
+      "exception_id": "EXC-0016",
+      "txn_id": "TXN218FE81183",
+      "break_type": "MISSING_UTR",
+      "root_cause_hypothesis": "Gateway settlement record exists but UTR reference is empty. Cannot cross-reference with bank statement without a UTR.",
+      "priority": "HIGH",
+      "reason_codes": [
+        "MISSING_UTR"
+      ],
+      "evidence": {
+        "txn_id": "TXN218FE81183",
+        "settlement_id": "SETC4E1432EE4",
+        "utr_ref": "",
+        "settlement_amount": 4126.41
+      }
+    },
+    {
       "exception_id": "EXC-0024",
-      "txn_id": "TXNAEC972138E",
+      "txn_id": "TXN2EA5E4B5D1",
       "break_type": "NO_GATEWAY_RECORD",
       "root_cause_hypothesis": "No gateway settlement record found for this transaction. Settlement may not have been processed or records are missing.",
       "priority": "HIGH",
@@ -137,23 +111,23 @@
         "NO_GATEWAY_RECORD"
       ],
       "evidence": {
-        "txn_id": "TXNAEC972138E",
+        "txn_id": "TXN2EA5E4B5D1",
         "settlement_count": 0
       }
     },
     {
       "exception_id": "EXC-0003",
-      "txn_id": "TXNB05B330978",
+      "txn_id": "TXN6784E3EBBB",
       "break_type": "DUPLICATE_SETTLEMENT",
-      "root_cause_hypothesis": "Transaction TXNB05B330978 has 2 gateway settlement records: SETAFB99EB025, SET0AAFF08E69. Only one settlement is expected.",
+      "root_cause_hypothesis": "Transaction TXN6784E3EBBB has 2 gateway settlement records: SET7416737257, SETFF0CCEAD90. Only one settlement is expected.",
       "priority": "HIGH",
       "reason_codes": [
         "DUPLICATE_SETTLEMENT"
       ],
       "evidence": {
         "settlement_ids": [
-          "SETAFB99EB025",
-          "SET0AAFF08E69"
+          "SET7416737257",
+          "SETFF0CCEAD90"
         ],
         "amounts": [
           5627.53,
@@ -163,7 +137,7 @@
     },
     {
       "exception_id": "EXC-0015",
-      "txn_id": "TXNF820B7E694",
+      "txn_id": "TXN6DF68E0E52",
       "break_type": "MISSING_UTR",
       "root_cause_hypothesis": "Gateway settlement record exists but UTR reference is empty. Cannot cross-reference with bank statement without a UTR.",
       "priority": "HIGH",
@@ -171,25 +145,25 @@
         "MISSING_UTR"
       ],
       "evidence": {
-        "txn_id": "TXNF820B7E694",
-        "settlement_id": "SET7D43F9A249",
+        "txn_id": "TXN6DF68E0E52",
+        "settlement_id": "SET61986D5C51",
         "utr_ref": "",
         "settlement_amount": 31247.38
       }
     },
     {
       "exception_id": "EXC-0004",
-      "txn_id": "TXNFA7D7A0CB1",
+      "txn_id": "TXNAFF61CC4E7",
       "break_type": "DUPLICATE_SETTLEMENT",
-      "root_cause_hypothesis": "Transaction TXNFA7D7A0CB1 has 2 gateway settlement records: SET436C3CDB24, SET26C6E40FBB. Only one settlement is expected.",
+      "root_cause_hypothesis": "Transaction TXNAFF61CC4E7 has 2 gateway settlement records: SETFAC8A567F9, SET6C4C6D2674. Only one settlement is expected.",
       "priority": "HIGH",
       "reason_codes": [
         "DUPLICATE_SETTLEMENT"
       ],
       "evidence": {
         "settlement_ids": [
-          "SET436C3CDB24",
-          "SET26C6E40FBB"
+          "SETFAC8A567F9",
+          "SET6C4C6D2674"
         ],
         "amounts": [
           44540.78,
@@ -198,82 +172,54 @@
       }
     },
     {
-      "exception_id": "EXC-0002",
-      "txn_id": "TXNFD224222FE",
-      "break_type": "DUPLICATE_SETTLEMENT",
-      "root_cause_hypothesis": "Transaction TXNFD224222FE has 2 gateway settlement records: SET9062F290DC, SET7F4D00C27E. Only one settlement is expected.",
+      "exception_id": "EXC-0019",
+      "txn_id": "TXNC8736CE11C",
+      "break_type": "MISSING_UTR",
+      "root_cause_hypothesis": "Gateway settlement record exists but UTR reference is empty. Cannot cross-reference with bank statement without a UTR.",
       "priority": "HIGH",
       "reason_codes": [
-        "DUPLICATE_SETTLEMENT"
+        "MISSING_UTR"
       ],
       "evidence": {
-        "settlement_ids": [
-          "SET9062F290DC",
-          "SET7F4D00C27E"
-        ],
-        "amounts": [
-          40946.65,
-          40946.65
-        ]
+        "txn_id": "TXNC8736CE11C",
+        "settlement_id": "SET6105945F54",
+        "utr_ref": "",
+        "settlement_amount": 22190.14
       }
     },
     {
-      "exception_id": "EXC-0021",
-      "txn_id": "TXN0C028D39E5",
-      "break_type": "PARTIAL_REFUND",
-      "root_cause_hypothesis": "Settlement amount ₹14359.8 is 45.0% of ledger amount ₹31894.78. Consistent with a partial refund. Refund record should be verified against the transaction status.",
-      "priority": "MEDIUM",
+      "exception_id": "EXC-0017",
+      "txn_id": "TXND4C80FB64B",
+      "break_type": "MISSING_UTR",
+      "root_cause_hypothesis": "Gateway settlement record exists but UTR reference is empty. Cannot cross-reference with bank statement without a UTR.",
+      "priority": "HIGH",
       "reason_codes": [
-        "PARTIAL_REFUND",
-        "AMOUNT_MISMATCH"
+        "MISSING_UTR"
       ],
       "evidence": {
-        "txn_id": "TXN0C028D39E5",
-        "ledger_amount": 31894.78,
-        "settled_amount": 14359.8,
-        "pct_settled": 45.0,
-        "txn_status": "TransactionStatus.REFUNDED"
+        "txn_id": "TXND4C80FB64B",
+        "settlement_id": "SET4B226D683C",
+        "utr_ref": "",
+        "settlement_amount": 7056.6
       }
     },
     {
-      "exception_id": "EXC-0006",
-      "txn_id": "TXN20974E26DE",
-      "break_type": "TIMING_MISMATCH",
-      "root_cause_hypothesis": "Bank value_date is 2.0 days after gateway settlement_date. Expected T+1 (≤24 h). Possible causes: bank holiday, batch processing lag, or timezone recording mismatch.",
-      "priority": "MEDIUM",
+      "exception_id": "EXC-0025",
+      "txn_id": "TXNECB48BF6F8",
+      "break_type": "NO_GATEWAY_RECORD",
+      "root_cause_hypothesis": "No gateway settlement record found for this transaction. Settlement may not have been processed or records are missing.",
+      "priority": "HIGH",
       "reason_codes": [
-        "TIMING_MISMATCH"
+        "NO_GATEWAY_RECORD"
       ],
       "evidence": {
-        "txn_id": "TXN20974E26DE",
-        "settlement_date": "2024-01-06T02:59:57.431631",
-        "bank_value_date": "2024-01-08T02:59:57.431631",
-        "delta_days": 2.0,
-        "settlement_amount": 48058.56,
-        "bank_net": 46924.38
-      }
-    },
-    {
-      "exception_id": "EXC-0012",
-      "txn_id": "TXN2BCD14E3ED",
-      "break_type": "TIMING_MISMATCH",
-      "root_cause_hypothesis": "Bank value_date is 2.0 days after gateway settlement_date. Expected T+1 (≤24 h). Possible causes: bank holiday, batch processing lag, or timezone recording mismatch.",
-      "priority": "MEDIUM",
-      "reason_codes": [
-        "TIMING_MISMATCH"
-      ],
-      "evidence": {
-        "txn_id": "TXN2BCD14E3ED",
-        "settlement_date": "2024-01-06T12:03:44.734960",
-        "bank_value_date": "2024-01-08T12:03:44.734960",
-        "delta_days": 2.0,
-        "settlement_amount": 10610.83,
-        "bank_net": 10360.41
+        "txn_id": "TXNECB48BF6F8",
+        "settlement_count": 0
       }
     },
     {
       "exception_id": "EXC-0011",
-      "txn_id": "TXN36B37B8CFC",
+      "txn_id": "TXN0D6392AD5E",
       "break_type": "TIMING_MISMATCH",
       "root_cause_hypothesis": "Bank value_date is 2.0 days after gateway settlement_date. Expected T+1 (≤24 h). Possible causes: bank holiday, batch processing lag, or timezone recording mismatch.",
       "priority": "MEDIUM",
@@ -281,7 +227,7 @@
         "TIMING_MISMATCH"
       ],
       "evidence": {
-        "txn_id": "TXN36B37B8CFC",
+        "txn_id": "TXN0D6392AD5E",
         "settlement_date": "2024-01-06T11:12:15.830816",
         "bank_value_date": "2024-01-08T11:12:15.830816",
         "delta_days": 2.0,
@@ -290,8 +236,8 @@
       }
     },
     {
-      "exception_id": "EXC-0013",
-      "txn_id": "TXN47C363E5E2",
+      "exception_id": "EXC-0006",
+      "txn_id": "TXN28B646595D",
       "break_type": "TIMING_MISMATCH",
       "root_cause_hypothesis": "Bank value_date is 2.0 days after gateway settlement_date. Expected T+1 (≤24 h). Possible causes: bank holiday, batch processing lag, or timezone recording mismatch.",
       "priority": "MEDIUM",
@@ -299,17 +245,17 @@
         "TIMING_MISMATCH"
       ],
       "evidence": {
-        "txn_id": "TXN47C363E5E2",
-        "settlement_date": "2024-01-06T13:14:53.747652",
-        "bank_value_date": "2024-01-08T13:14:53.747652",
+        "txn_id": "TXN28B646595D",
+        "settlement_date": "2024-01-06T02:59:57.431631",
+        "bank_value_date": "2024-01-08T02:59:57.431631",
         "delta_days": 2.0,
-        "settlement_amount": 20091.4,
-        "bank_net": 19617.24
+        "settlement_amount": 48058.56,
+        "bank_net": 46924.38
       }
     },
     {
       "exception_id": "EXC-0005",
-      "txn_id": "TXN4BBC148204",
+      "txn_id": "TXN2E1C48D777",
       "break_type": "TIMING_MISMATCH",
       "root_cause_hypothesis": "Bank value_date is 2.0 days after gateway settlement_date. Expected T+1 (≤24 h). Possible causes: bank holiday, batch processing lag, or timezone recording mismatch.",
       "priority": "MEDIUM",
@@ -317,7 +263,7 @@
         "TIMING_MISMATCH"
       ],
       "evidence": {
-        "txn_id": "TXN4BBC148204",
+        "txn_id": "TXN2E1C48D777",
         "settlement_date": "2024-01-06T01:13:20.181886",
         "bank_value_date": "2024-01-08T01:13:20.181886",
         "delta_days": 2.0,
@@ -326,26 +272,26 @@
       }
     },
     {
-      "exception_id": "EXC-0022",
-      "txn_id": "TXN85BFE5450D",
+      "exception_id": "EXC-0021",
+      "txn_id": "TXN6075A884E9",
       "break_type": "PARTIAL_REFUND",
-      "root_cause_hypothesis": "Settlement amount ₹22032.18 is 48.5% of ledger amount ₹45453.87. Consistent with a partial refund. Refund record should be verified against the transaction status.",
+      "root_cause_hypothesis": "Settlement amount ₹14359.8 is 45.0% of ledger amount ₹31894.78. Consistent with a partial refund. Refund record should be verified against the transaction status.",
       "priority": "MEDIUM",
       "reason_codes": [
         "PARTIAL_REFUND",
         "AMOUNT_MISMATCH"
       ],
       "evidence": {
-        "txn_id": "TXN85BFE5450D",
-        "ledger_amount": 45453.87,
-        "settled_amount": 22032.18,
-        "pct_settled": 48.5,
+        "txn_id": "TXN6075A884E9",
+        "ledger_amount": 31894.78,
+        "settled_amount": 14359.8,
+        "pct_settled": 45.0,
         "txn_status": "TransactionStatus.REFUNDED"
       }
     },
     {
-      "exception_id": "EXC-0010",
-      "txn_id": "TXN91E32E6D9C",
+      "exception_id": "EXC-0013",
+      "txn_id": "TXN705E6879C7",
       "break_type": "TIMING_MISMATCH",
       "root_cause_hypothesis": "Bank value_date is 2.0 days after gateway settlement_date. Expected T+1 (≤24 h). Possible causes: bank holiday, batch processing lag, or timezone recording mismatch.",
       "priority": "MEDIUM",
@@ -353,53 +299,17 @@
         "TIMING_MISMATCH"
       ],
       "evidence": {
-        "txn_id": "TXN91E32E6D9C",
-        "settlement_date": "2024-01-06T09:18:08.417024",
-        "bank_value_date": "2024-01-08T09:18:08.417024",
+        "txn_id": "TXN705E6879C7",
+        "settlement_date": "2024-01-06T13:14:53.747652",
+        "bank_value_date": "2024-01-08T13:14:53.747652",
         "delta_days": 2.0,
-        "settlement_amount": 31159.38,
-        "bank_net": 30424.02
-      }
-    },
-    {
-      "exception_id": "EXC-0008",
-      "txn_id": "TXN9980F9C98D",
-      "break_type": "TIMING_MISMATCH",
-      "root_cause_hypothesis": "Bank value_date is 2.0 days after gateway settlement_date. Expected T+1 (≤24 h). Possible causes: bank holiday, batch processing lag, or timezone recording mismatch.",
-      "priority": "MEDIUM",
-      "reason_codes": [
-        "TIMING_MISMATCH"
-      ],
-      "evidence": {
-        "txn_id": "TXN9980F9C98D",
-        "settlement_date": "2024-01-06T06:25:28.198507",
-        "bank_value_date": "2024-01-08T06:25:28.198507",
-        "delta_days": 2.0,
-        "settlement_amount": 12142.59,
-        "bank_net": 11856.03
-      }
-    },
-    {
-      "exception_id": "EXC-0007",
-      "txn_id": "TXNB81665ED74",
-      "break_type": "TIMING_MISMATCH",
-      "root_cause_hypothesis": "Bank value_date is 2.0 days after gateway settlement_date. Expected T+1 (≤24 h). Possible causes: bank holiday, batch processing lag, or timezone recording mismatch.",
-      "priority": "MEDIUM",
-      "reason_codes": [
-        "TIMING_MISMATCH"
-      ],
-      "evidence": {
-        "txn_id": "TXNB81665ED74",
-        "settlement_date": "2024-01-06T04:30:43.579420",
-        "bank_value_date": "2024-01-08T04:30:43.579420",
-        "delta_days": 2.0,
-        "settlement_amount": 3891.81,
-        "bank_net": 3799.96
+        "settlement_amount": 20091.4,
+        "bank_net": 19617.24
       }
     },
     {
       "exception_id": "EXC-0020",
-      "txn_id": "TXNBD93DC525A",
+      "txn_id": "TXN8B8BD37A0C",
       "break_type": "PARTIAL_REFUND",
       "root_cause_hypothesis": "Settlement amount ₹6367.05 is 44.1% of ledger amount ₹14446.94. Consistent with a partial refund. Refund record should be verified against the transaction status.",
       "priority": "MEDIUM",
@@ -408,7 +318,7 @@
         "AMOUNT_MISMATCH"
       ],
       "evidence": {
-        "txn_id": "TXNBD93DC525A",
+        "txn_id": "TXN8B8BD37A0C",
         "ledger_amount": 14446.94,
         "settled_amount": 6367.05,
         "pct_settled": 44.1,
@@ -416,8 +326,8 @@
       }
     },
     {
-      "exception_id": "EXC-0014",
-      "txn_id": "TXNDCF4E9BC8B",
+      "exception_id": "EXC-0008",
+      "txn_id": "TXNB797A782F9",
       "break_type": "TIMING_MISMATCH",
       "root_cause_hypothesis": "Bank value_date is 2.0 days after gateway settlement_date. Expected T+1 (≤24 h). Possible causes: bank holiday, batch processing lag, or timezone recording mismatch.",
       "priority": "MEDIUM",
@@ -425,7 +335,79 @@
         "TIMING_MISMATCH"
       ],
       "evidence": {
-        "txn_id": "TXNDCF4E9BC8B",
+        "txn_id": "TXNB797A782F9",
+        "settlement_date": "2024-01-06T06:25:28.198507",
+        "bank_value_date": "2024-01-08T06:25:28.198507",
+        "delta_days": 2.0,
+        "settlement_amount": 12142.59,
+        "bank_net": 11856.03
+      }
+    },
+    {
+      "exception_id": "EXC-0009",
+      "txn_id": "TXNC1B5F18908",
+      "break_type": "TIMING_MISMATCH",
+      "root_cause_hypothesis": "Bank value_date is 2.0 days after gateway settlement_date. Expected T+1 (≤24 h). Possible causes: bank holiday, batch processing lag, or timezone recording mismatch.",
+      "priority": "MEDIUM",
+      "reason_codes": [
+        "TIMING_MISMATCH"
+      ],
+      "evidence": {
+        "txn_id": "TXNC1B5F18908",
+        "settlement_date": "2024-01-06T07:48:58.601936",
+        "bank_value_date": "2024-01-08T07:48:58.601936",
+        "delta_days": 2.0,
+        "settlement_amount": 28698.93,
+        "bank_net": 28021.63
+      }
+    },
+    {
+      "exception_id": "EXC-0012",
+      "txn_id": "TXNC24D65703B",
+      "break_type": "TIMING_MISMATCH",
+      "root_cause_hypothesis": "Bank value_date is 2.0 days after gateway settlement_date. Expected T+1 (≤24 h). Possible causes: bank holiday, batch processing lag, or timezone recording mismatch.",
+      "priority": "MEDIUM",
+      "reason_codes": [
+        "TIMING_MISMATCH"
+      ],
+      "evidence": {
+        "txn_id": "TXNC24D65703B",
+        "settlement_date": "2024-01-06T12:03:44.734960",
+        "bank_value_date": "2024-01-08T12:03:44.734960",
+        "delta_days": 2.0,
+        "settlement_amount": 10610.83,
+        "bank_net": 10360.41
+      }
+    },
+    {
+      "exception_id": "EXC-0007",
+      "txn_id": "TXNE060785672",
+      "break_type": "TIMING_MISMATCH",
+      "root_cause_hypothesis": "Bank value_date is 2.0 days after gateway settlement_date. Expected T+1 (≤24 h). Possible causes: bank holiday, batch processing lag, or timezone recording mismatch.",
+      "priority": "MEDIUM",
+      "reason_codes": [
+        "TIMING_MISMATCH"
+      ],
+      "evidence": {
+        "txn_id": "TXNE060785672",
+        "settlement_date": "2024-01-06T04:30:43.579420",
+        "bank_value_date": "2024-01-08T04:30:43.579420",
+        "delta_days": 2.0,
+        "settlement_amount": 3891.81,
+        "bank_net": 3799.96
+      }
+    },
+    {
+      "exception_id": "EXC-0014",
+      "txn_id": "TXNE5E5F6E4DB",
+      "break_type": "TIMING_MISMATCH",
+      "root_cause_hypothesis": "Bank value_date is 2.0 days after gateway settlement_date. Expected T+1 (≤24 h). Possible causes: bank holiday, batch processing lag, or timezone recording mismatch.",
+      "priority": "MEDIUM",
+      "reason_codes": [
+        "TIMING_MISMATCH"
+      ],
+      "evidence": {
+        "txn_id": "TXNE5E5F6E4DB",
         "settlement_date": "2024-01-06T13:45:44.051119",
         "bank_value_date": "2024-01-08T13:45:44.051119",
         "delta_days": 2.0,
@@ -434,8 +416,26 @@
       }
     },
     {
-      "exception_id": "EXC-0009",
-      "txn_id": "TXNF4E4AC1EE1",
+      "exception_id": "EXC-0022",
+      "txn_id": "TXNE8C21BCA45",
+      "break_type": "PARTIAL_REFUND",
+      "root_cause_hypothesis": "Settlement amount ₹22032.18 is 48.5% of ledger amount ₹45453.87. Consistent with a partial refund. Refund record should be verified against the transaction status.",
+      "priority": "MEDIUM",
+      "reason_codes": [
+        "PARTIAL_REFUND",
+        "AMOUNT_MISMATCH"
+      ],
+      "evidence": {
+        "txn_id": "TXNE8C21BCA45",
+        "ledger_amount": 45453.87,
+        "settled_amount": 22032.18,
+        "pct_settled": 48.5,
+        "txn_status": "TransactionStatus.REFUNDED"
+      }
+    },
+    {
+      "exception_id": "EXC-0010",
+      "txn_id": "TXNEC12CE2AD9",
       "break_type": "TIMING_MISMATCH",
       "root_cause_hypothesis": "Bank value_date is 2.0 days after gateway settlement_date. Expected T+1 (≤24 h). Possible causes: bank holiday, batch processing lag, or timezone recording mismatch.",
       "priority": "MEDIUM",
@@ -443,1003 +443,1003 @@
         "TIMING_MISMATCH"
       ],
       "evidence": {
-        "txn_id": "TXNF4E4AC1EE1",
-        "settlement_date": "2024-01-06T07:48:58.601936",
-        "bank_value_date": "2024-01-08T07:48:58.601936",
+        "txn_id": "TXNEC12CE2AD9",
+        "settlement_date": "2024-01-06T09:18:08.417024",
+        "bank_value_date": "2024-01-08T09:18:08.417024",
         "delta_days": 2.0,
-        "settlement_amount": 28698.93,
-        "bank_net": 28021.63
+        "settlement_amount": 31159.38,
+        "bank_net": 30424.02
       }
     }
   ],
   "match_results": [
     {
-      "txn_id": "TXNF7ABF03F48",
+      "txn_id": "TXNF5116C3781",
       "match_status": "MATCHED",
       "confidence_score": 1.0,
       "matched_against": [
-        "SET0EDB826179",
-        "UTR7622E1AA730C"
+        "SET951FB3BA3C",
+        "UTR5D083804B2C2"
       ],
-      "audit_trail": "EXACT_MATCH: txn_id=TXNF7ABF03F48 → settlement=SET0EDB826179 (utr=UTR7622E1AA730C) → bank_utr=UTR7622E1AA730C. Amounts: txn=32151.63, gw=32151.63, bank_net=31392.85 (expected_net=31392.85)."
+      "audit_trail": "EXACT_MATCH: txn_id=TXNF5116C3781 → settlement=SET951FB3BA3C (utr=UTR5D083804B2C2) → bank_utr=UTR5D083804B2C2. Amounts: txn=32151.63, gw=32151.63, bank_net=31392.85 (expected_net=31392.85)."
     },
     {
-      "txn_id": "TXN561D3F4BDD",
+      "txn_id": "TXN2210E30D31",
       "match_status": "MATCHED",
       "confidence_score": 1.0,
       "matched_against": [
-        "SET0A5827F7B7",
-        "UTR14F5B1313A90"
+        "SETF5A5D506FF",
+        "UTR5836316710FC"
       ],
-      "audit_trail": "EXACT_MATCH: txn_id=TXN561D3F4BDD → settlement=SET0A5827F7B7 (utr=UTR14F5B1313A90) → bank_utr=UTR14F5B1313A90. Amounts: txn=12622.15, gw=12622.15, bank_net=12324.27 (expected_net=12324.27)."
+      "audit_trail": "EXACT_MATCH: txn_id=TXN2210E30D31 → settlement=SETF5A5D506FF (utr=UTR5836316710FC) → bank_utr=UTR5836316710FC. Amounts: txn=12622.15, gw=12622.15, bank_net=12324.27 (expected_net=12324.27)."
     },
     {
-      "txn_id": "TXND9DB030ED1",
+      "txn_id": "TXND3527B0AA8",
       "match_status": "MATCHED",
       "confidence_score": 1.0,
       "matched_against": [
-        "SETCB74424773",
-        "UTR3E5B1559AF96"
+        "SETB03834B050",
+        "UTR7FBDEC210693"
       ],
-      "audit_trail": "EXACT_MATCH: txn_id=TXND9DB030ED1 → settlement=SETCB74424773 (utr=UTR3E5B1559AF96) → bank_utr=UTR3E5B1559AF96. Amounts: txn=33996.62, gw=33996.62, bank_net=33194.3 (expected_net=33194.3)."
+      "audit_trail": "EXACT_MATCH: txn_id=TXND3527B0AA8 → settlement=SETB03834B050 (utr=UTR7FBDEC210693) → bank_utr=UTR7FBDEC210693. Amounts: txn=33996.62, gw=33996.62, bank_net=33194.3 (expected_net=33194.3)."
     },
     {
-      "txn_id": "TXN2FB6919964",
+      "txn_id": "TXN566AF5ED67",
       "match_status": "MATCHED",
       "confidence_score": 1.0,
       "matched_against": [
-        "SET051D170181",
-        "UTR355B3D735C1F"
+        "SETF5F19546DF",
+        "UTR3258CB24DE7D"
       ],
-      "audit_trail": "EXACT_MATCH: txn_id=TXN2FB6919964 → settlement=SET051D170181 (utr=UTR355B3D735C1F) → bank_utr=UTR355B3D735C1F. Amounts: txn=21385.13, gw=21385.13, bank_net=20880.44 (expected_net=20880.44)."
+      "audit_trail": "EXACT_MATCH: txn_id=TXN566AF5ED67 → settlement=SETF5F19546DF (utr=UTR3258CB24DE7D) → bank_utr=UTR3258CB24DE7D. Amounts: txn=21385.13, gw=21385.13, bank_net=20880.44 (expected_net=20880.44)."
     },
     {
-      "txn_id": "TXN4ACB0FAA3C",
+      "txn_id": "TXN30E476BC8C",
       "match_status": "MATCHED",
       "confidence_score": 1.0,
       "matched_against": [
-        "SETEFABC8790F",
-        "UTR9A6D54A62500"
+        "SET854C9CA642",
+        "UTRDA2F143BE7B2"
       ],
-      "audit_trail": "EXACT_MATCH: txn_id=TXN4ACB0FAA3C → settlement=SETEFABC8790F (utr=UTR9A6D54A62500) → bank_utr=UTR9A6D54A62500. Amounts: txn=12016.71, gw=12016.71, bank_net=11733.12 (expected_net=11733.12)."
+      "audit_trail": "EXACT_MATCH: txn_id=TXN30E476BC8C → settlement=SET854C9CA642 (utr=UTRDA2F143BE7B2) → bank_utr=UTRDA2F143BE7B2. Amounts: txn=12016.71, gw=12016.71, bank_net=11733.12 (expected_net=11733.12)."
     },
     {
-      "txn_id": "TXNA2F7BD6BFF",
+      "txn_id": "TXNCBE47E2290",
       "match_status": "MATCHED",
       "confidence_score": 1.0,
       "matched_against": [
-        "SET73331DD8B9",
-        "UTR4AFEBA97F99A"
+        "SET798925D4C8",
+        "UTR67FAFB5A1E83"
       ],
-      "audit_trail": "EXACT_MATCH: txn_id=TXNA2F7BD6BFF → settlement=SET73331DD8B9 (utr=UTR4AFEBA97F99A) → bank_utr=UTR4AFEBA97F99A. Amounts: txn=10342.46, gw=10342.46, bank_net=10098.38 (expected_net=10098.38)."
+      "audit_trail": "EXACT_MATCH: txn_id=TXNCBE47E2290 → settlement=SET798925D4C8 (utr=UTR67FAFB5A1E83) → bank_utr=UTR67FAFB5A1E83. Amounts: txn=10342.46, gw=10342.46, bank_net=10098.38 (expected_net=10098.38)."
     },
     {
-      "txn_id": "TXN9A45C0F6C5",
+      "txn_id": "TXN54C89F8151",
       "match_status": "MATCHED",
       "confidence_score": 1.0,
       "matched_against": [
-        "SET3211527FBE",
-        "UTR220E0DD4A9C3"
+        "SETA57E4D22A7",
+        "UTRD269E3FC29A2"
       ],
-      "audit_trail": "EXACT_MATCH: txn_id=TXN9A45C0F6C5 → settlement=SET3211527FBE (utr=UTR220E0DD4A9C3) → bank_utr=UTR220E0DD4A9C3. Amounts: txn=22735.85, gw=22735.85, bank_net=22199.28 (expected_net=22199.28)."
+      "audit_trail": "EXACT_MATCH: txn_id=TXN54C89F8151 → settlement=SETA57E4D22A7 (utr=UTRD269E3FC29A2) → bank_utr=UTRD269E3FC29A2. Amounts: txn=22735.85, gw=22735.85, bank_net=22199.28 (expected_net=22199.28)."
     },
     {
-      "txn_id": "TXN8A441846C6",
+      "txn_id": "TXN1665CF4972",
       "match_status": "MATCHED",
       "confidence_score": 1.0,
       "matched_against": [
-        "SET92F494DE5F",
-        "UTR94E213E7DF90"
+        "SET9A57EA8DE9",
+        "UTR9512A6C991B1"
       ],
-      "audit_trail": "EXACT_MATCH: txn_id=TXN8A441846C6 → settlement=SET92F494DE5F (utr=UTR94E213E7DF90) → bank_utr=UTR94E213E7DF90. Amounts: txn=821.69, gw=821.69, bank_net=802.3 (expected_net=802.3)."
+      "audit_trail": "EXACT_MATCH: txn_id=TXN1665CF4972 → settlement=SET9A57EA8DE9 (utr=UTR9512A6C991B1) → bank_utr=UTR9512A6C991B1. Amounts: txn=821.69, gw=821.69, bank_net=802.3 (expected_net=802.3)."
     },
     {
-      "txn_id": "TXNCB58A41E9F",
+      "txn_id": "TXN6C69FBA968",
       "match_status": "MATCHED",
       "confidence_score": 1.0,
       "matched_against": [
-        "SETA9AED6E4BF",
-        "UTR75545B5F3B11"
+        "SET4C6DFBFCC8",
+        "UTR0BA7E68C5CBA"
       ],
-      "audit_trail": "EXACT_MATCH: txn_id=TXNCB58A41E9F → settlement=SETA9AED6E4BF (utr=UTR75545B5F3B11) → bank_utr=UTR75545B5F3B11. Amounts: txn=17342.4, gw=17342.4, bank_net=16933.12 (expected_net=16933.12)."
+      "audit_trail": "EXACT_MATCH: txn_id=TXN6C69FBA968 → settlement=SET4C6DFBFCC8 (utr=UTR0BA7E68C5CBA) → bank_utr=UTR0BA7E68C5CBA. Amounts: txn=17342.4, gw=17342.4, bank_net=16933.12 (expected_net=16933.12)."
     },
     {
-      "txn_id": "TXN9E28DCC215",
+      "txn_id": "TXN8D6B62C277",
       "match_status": "MATCHED",
       "confidence_score": 1.0,
       "matched_against": [
-        "SET2C97EC4096",
-        "UTRF1C4838BD2C1"
+        "SET77AC5AF738",
+        "UTR6525F06BBE43"
       ],
-      "audit_trail": "EXACT_MATCH: txn_id=TXN9E28DCC215 → settlement=SET2C97EC4096 (utr=UTRF1C4838BD2C1) → bank_utr=UTRF1C4838BD2C1. Amounts: txn=38292.96, gw=38292.96, bank_net=37389.25 (expected_net=37389.25)."
+      "audit_trail": "EXACT_MATCH: txn_id=TXN8D6B62C277 → settlement=SET77AC5AF738 (utr=UTR6525F06BBE43) → bank_utr=UTR6525F06BBE43. Amounts: txn=38292.96, gw=38292.96, bank_net=37389.25 (expected_net=37389.25)."
     },
     {
-      "txn_id": "TXN7289104839",
+      "txn_id": "TXN8358F99631",
       "match_status": "MATCHED",
       "confidence_score": 1.0,
       "matched_against": [
-        "SETA1CFE61EF9",
-        "UTRC1734F3F1835"
+        "SET8BA7FD9E69",
+        "UTRFD49DEBD1F89"
       ],
-      "audit_trail": "EXACT_MATCH: txn_id=TXN7289104839 → settlement=SETA1CFE61EF9 (utr=UTRC1734F3F1835) → bank_utr=UTRC1734F3F1835. Amounts: txn=5287.46, gw=5287.46, bank_net=5162.67 (expected_net=5162.67)."
+      "audit_trail": "EXACT_MATCH: txn_id=TXN8358F99631 → settlement=SET8BA7FD9E69 (utr=UTRFD49DEBD1F89) → bank_utr=UTRFD49DEBD1F89. Amounts: txn=5287.46, gw=5287.46, bank_net=5162.67 (expected_net=5162.67)."
     },
     {
-      "txn_id": "TXN3F78CFE8FB",
+      "txn_id": "TXN846ECC4711",
       "match_status": "MATCHED",
       "confidence_score": 1.0,
       "matched_against": [
-        "SET377B2148B7",
-        "UTR07F2282E56F8"
+        "SETD282DEDAC9",
+        "UTRA7AF00F91B30"
       ],
-      "audit_trail": "EXACT_MATCH: txn_id=TXN3F78CFE8FB → settlement=SET377B2148B7 (utr=UTR07F2282E56F8) → bank_utr=UTR07F2282E56F8. Amounts: txn=40452.85, gw=40452.85, bank_net=39498.16 (expected_net=39498.16)."
+      "audit_trail": "EXACT_MATCH: txn_id=TXN846ECC4711 → settlement=SETD282DEDAC9 (utr=UTRA7AF00F91B30) → bank_utr=UTRA7AF00F91B30. Amounts: txn=40452.85, gw=40452.85, bank_net=39498.16 (expected_net=39498.16)."
     },
     {
-      "txn_id": "TXN9B7E558181",
+      "txn_id": "TXND1853E5862",
       "match_status": "MATCHED",
       "confidence_score": 1.0,
       "matched_against": [
-        "SET8415C3F8D4",
-        "UTRFF749600CC51"
+        "SET5D028A3C58",
+        "UTR13CF67EAD10B"
       ],
-      "audit_trail": "EXACT_MATCH: txn_id=TXN9B7E558181 → settlement=SET8415C3F8D4 (utr=UTRFF749600CC51) → bank_utr=UTRFF749600CC51. Amounts: txn=48669.23, gw=48669.23, bank_net=47520.64 (expected_net=47520.64)."
+      "audit_trail": "EXACT_MATCH: txn_id=TXND1853E5862 → settlement=SET5D028A3C58 (utr=UTR13CF67EAD10B) → bank_utr=UTR13CF67EAD10B. Amounts: txn=48669.23, gw=48669.23, bank_net=47520.64 (expected_net=47520.64)."
     },
     {
-      "txn_id": "TXN66B25D8708",
+      "txn_id": "TXNB1EDDAAF3C",
       "match_status": "MATCHED",
       "confidence_score": 1.0,
       "matched_against": [
-        "SET7594D68E95",
-        "UTR226AF670AF32"
+        "SET09644B3B4D",
+        "UTR0651177646A4"
       ],
-      "audit_trail": "EXACT_MATCH: txn_id=TXN66B25D8708 → settlement=SET7594D68E95 (utr=UTR226AF670AF32) → bank_utr=UTR226AF670AF32. Amounts: txn=15012.32, gw=15012.32, bank_net=14658.03 (expected_net=14658.03)."
+      "audit_trail": "EXACT_MATCH: txn_id=TXNB1EDDAAF3C → settlement=SET09644B3B4D (utr=UTR0651177646A4) → bank_utr=UTR0651177646A4. Amounts: txn=15012.32, gw=15012.32, bank_net=14658.03 (expected_net=14658.03)."
     },
     {
-      "txn_id": "TXN36B0CA228C",
+      "txn_id": "TXN66398236AE",
       "match_status": "MATCHED",
       "confidence_score": 1.0,
       "matched_against": [
-        "SETD5AC940D19",
-        "UTR9E9FD4371988"
+        "SET31EA0EC1C6",
+        "UTRC8979C7B696E"
       ],
-      "audit_trail": "EXACT_MATCH: txn_id=TXN36B0CA228C → settlement=SETD5AC940D19 (utr=UTR9E9FD4371988) → bank_utr=UTR9E9FD4371988. Amounts: txn=18400.93, gw=18400.93, bank_net=17966.67 (expected_net=17966.67)."
+      "audit_trail": "EXACT_MATCH: txn_id=TXN66398236AE → settlement=SET31EA0EC1C6 (utr=UTRC8979C7B696E) → bank_utr=UTRC8979C7B696E. Amounts: txn=18400.93, gw=18400.93, bank_net=17966.67 (expected_net=17966.67)."
     },
     {
-      "txn_id": "TXNC4B2DA78EF",
+      "txn_id": "TXN486A28EB6C",
       "match_status": "MATCHED",
       "confidence_score": 1.0,
       "matched_against": [
-        "SET037F82C112",
-        "UTR16A14713F334"
+        "SET736C9B98E7",
+        "UTRBB024EAC1A4F"
       ],
-      "audit_trail": "EXACT_MATCH: txn_id=TXNC4B2DA78EF → settlement=SET037F82C112 (utr=UTR16A14713F334) → bank_utr=UTR16A14713F334. Amounts: txn=2768.31, gw=2768.31, bank_net=2702.97 (expected_net=2702.97)."
+      "audit_trail": "EXACT_MATCH: txn_id=TXN486A28EB6C → settlement=SET736C9B98E7 (utr=UTRBB024EAC1A4F) → bank_utr=UTRBB024EAC1A4F. Amounts: txn=2768.31, gw=2768.31, bank_net=2702.97 (expected_net=2702.97)."
     },
     {
-      "txn_id": "TXN192D962B56",
+      "txn_id": "TXND50A556D93",
       "match_status": "MATCHED",
       "confidence_score": 1.0,
       "matched_against": [
-        "SETD236A3AFDF",
-        "UTR754EB377891C"
+        "SETB307A0D636",
+        "UTR591E52FE9212"
       ],
-      "audit_trail": "EXACT_MATCH: txn_id=TXN192D962B56 → settlement=SETD236A3AFDF (utr=UTR754EB377891C) → bank_utr=UTR754EB377891C. Amounts: txn=49268.47, gw=49268.47, bank_net=48105.73 (expected_net=48105.73)."
+      "audit_trail": "EXACT_MATCH: txn_id=TXND50A556D93 → settlement=SETB307A0D636 (utr=UTR591E52FE9212) → bank_utr=UTR591E52FE9212. Amounts: txn=49268.47, gw=49268.47, bank_net=48105.73 (expected_net=48105.73)."
     },
     {
-      "txn_id": "TXNDE4A697B58",
+      "txn_id": "TXNFB78FFC23C",
       "match_status": "MATCHED",
       "confidence_score": 1.0,
       "matched_against": [
-        "SET0B57764418",
-        "UTR6A810FDC2F37"
+        "SET6BEBD02BCB",
+        "UTREFEF796169C9"
       ],
-      "audit_trail": "EXACT_MATCH: txn_id=TXNDE4A697B58 → settlement=SET0B57764418 (utr=UTR6A810FDC2F37) → bank_utr=UTR6A810FDC2F37. Amounts: txn=19316.25, gw=19316.25, bank_net=18860.39 (expected_net=18860.39)."
+      "audit_trail": "EXACT_MATCH: txn_id=TXNFB78FFC23C → settlement=SET6BEBD02BCB (utr=UTREFEF796169C9) → bank_utr=UTREFEF796169C9. Amounts: txn=19316.25, gw=19316.25, bank_net=18860.39 (expected_net=18860.39)."
     },
     {
-      "txn_id": "TXN842D55E4EA",
+      "txn_id": "TXN27A7531E2B",
       "match_status": "MATCHED",
       "confidence_score": 1.0,
       "matched_against": [
-        "SETC4F6B90428",
-        "UTRE732F5F3FFDB"
+        "SETEE516400A6",
+        "UTRB85E6BAE7F78"
       ],
-      "audit_trail": "EXACT_MATCH: txn_id=TXN842D55E4EA → settlement=SETC4F6B90428 (utr=UTRE732F5F3FFDB) → bank_utr=UTRE732F5F3FFDB. Amounts: txn=18559.19, gw=18559.19, bank_net=18121.2 (expected_net=18121.2)."
+      "audit_trail": "EXACT_MATCH: txn_id=TXN27A7531E2B → settlement=SETEE516400A6 (utr=UTRB85E6BAE7F78) → bank_utr=UTRB85E6BAE7F78. Amounts: txn=18559.19, gw=18559.19, bank_net=18121.2 (expected_net=18121.2)."
     },
     {
-      "txn_id": "TXN3D5F439081",
+      "txn_id": "TXND60FA5E5E4",
       "match_status": "MATCHED",
       "confidence_score": 1.0,
       "matched_against": [
-        "SETF7DC903338",
-        "UTR75694B0DC3D4"
+        "SETB001F85CE2",
+        "UTR3BBF8F49AA55"
       ],
-      "audit_trail": "EXACT_MATCH: txn_id=TXN3D5F439081 → settlement=SETF7DC903338 (utr=UTR75694B0DC3D4) → bank_utr=UTR75694B0DC3D4. Amounts: txn=33673.67, gw=33673.67, bank_net=32878.98 (expected_net=32878.98)."
+      "audit_trail": "EXACT_MATCH: txn_id=TXND60FA5E5E4 → settlement=SETB001F85CE2 (utr=UTR3BBF8F49AA55) → bank_utr=UTR3BBF8F49AA55. Amounts: txn=33673.67, gw=33673.67, bank_net=32878.98 (expected_net=32878.98)."
     },
     {
-      "txn_id": "TXN84F185CC94",
+      "txn_id": "TXNEEA9368465",
       "match_status": "MATCHED",
       "confidence_score": 1.0,
       "matched_against": [
-        "SET1381AF1FD9",
-        "UTR2311797BA23D"
+        "SET41591B4A9A",
+        "UTRFD14A454A3D0"
       ],
-      "audit_trail": "EXACT_MATCH: txn_id=TXN84F185CC94 → settlement=SET1381AF1FD9 (utr=UTR2311797BA23D) → bank_utr=UTR2311797BA23D. Amounts: txn=8971.36, gw=8971.36, bank_net=8759.63 (expected_net=8759.63)."
+      "audit_trail": "EXACT_MATCH: txn_id=TXNEEA9368465 → settlement=SET41591B4A9A (utr=UTRFD14A454A3D0) → bank_utr=UTRFD14A454A3D0. Amounts: txn=8971.36, gw=8971.36, bank_net=8759.63 (expected_net=8759.63)."
     },
     {
-      "txn_id": "TXN0E3C8BB24E",
+      "txn_id": "TXN0DEF61390D",
       "match_status": "MATCHED",
       "confidence_score": 1.0,
       "matched_against": [
-        "SET21B4D49461",
-        "UTRA7D53ACFE8F7"
+        "SET5512D3ED8D",
+        "UTR9532EF202BD9"
       ],
-      "audit_trail": "EXACT_MATCH: txn_id=TXN0E3C8BB24E → settlement=SET21B4D49461 (utr=UTRA7D53ACFE8F7) → bank_utr=UTRA7D53ACFE8F7. Amounts: txn=19283.04, gw=19283.04, bank_net=18827.96 (expected_net=18827.96)."
+      "audit_trail": "EXACT_MATCH: txn_id=TXN0DEF61390D → settlement=SET5512D3ED8D (utr=UTR9532EF202BD9) → bank_utr=UTR9532EF202BD9. Amounts: txn=19283.04, gw=19283.04, bank_net=18827.96 (expected_net=18827.96)."
     },
     {
-      "txn_id": "TXNE509B23959",
+      "txn_id": "TXN98E14B494D",
       "match_status": "MATCHED",
       "confidence_score": 1.0,
       "matched_against": [
-        "SETCDDBF52FC9",
-        "UTR08740BF384A9"
+        "SETA6127AE1EE",
+        "UTR6FA0F389F389"
       ],
-      "audit_trail": "EXACT_MATCH: txn_id=TXNE509B23959 → settlement=SETCDDBF52FC9 (utr=UTR08740BF384A9) → bank_utr=UTR08740BF384A9. Amounts: txn=16552.0, gw=16552.0, bank_net=16161.37 (expected_net=16161.37)."
+      "audit_trail": "EXACT_MATCH: txn_id=TXN98E14B494D → settlement=SETA6127AE1EE (utr=UTR6FA0F389F389) → bank_utr=UTR6FA0F389F389. Amounts: txn=16552.0, gw=16552.0, bank_net=16161.37 (expected_net=16161.37)."
     },
     {
-      "txn_id": "TXN3E31752D37",
+      "txn_id": "TXNA0ABBEF099",
       "match_status": "MATCHED",
       "confidence_score": 1.0,
       "matched_against": [
-        "SETD23DF2EC11",
-        "UTR5996FF8DEF48"
+        "SETD62E57FDA5",
+        "UTRD077CE61D431"
       ],
-      "audit_trail": "EXACT_MATCH: txn_id=TXN3E31752D37 → settlement=SETD23DF2EC11 (utr=UTR5996FF8DEF48) → bank_utr=UTR5996FF8DEF48. Amounts: txn=2088.96, gw=2088.96, bank_net=2039.66 (expected_net=2039.66)."
+      "audit_trail": "EXACT_MATCH: txn_id=TXNA0ABBEF099 → settlement=SETD62E57FDA5 (utr=UTRD077CE61D431) → bank_utr=UTRD077CE61D431. Amounts: txn=2088.96, gw=2088.96, bank_net=2039.66 (expected_net=2039.66)."
     },
     {
-      "txn_id": "TXN28C6D751CF",
+      "txn_id": "TXN49E4D65CEC",
       "match_status": "MATCHED",
       "confidence_score": 1.0,
       "matched_against": [
-        "SET785C208A7A",
-        "UTREA75E93285A2"
+        "SET2AABB5930E",
+        "UTR65ECA842766B"
       ],
-      "audit_trail": "EXACT_MATCH: txn_id=TXN28C6D751CF → settlement=SET785C208A7A (utr=UTREA75E93285A2) → bank_utr=UTREA75E93285A2. Amounts: txn=3776.34, gw=3776.34, bank_net=3687.21 (expected_net=3687.21)."
+      "audit_trail": "EXACT_MATCH: txn_id=TXN49E4D65CEC → settlement=SET2AABB5930E (utr=UTR65ECA842766B) → bank_utr=UTR65ECA842766B. Amounts: txn=3776.34, gw=3776.34, bank_net=3687.21 (expected_net=3687.21)."
     },
     {
-      "txn_id": "TXN7A272A21E5",
+      "txn_id": "TXN013E4DDE1C",
       "match_status": "MATCHED",
       "confidence_score": 1.0,
       "matched_against": [
-        "SETB60C3B07D6",
-        "UTRF792E9579BE0"
+        "SET4C7CDB2987",
+        "UTR19C75E5DEC88"
       ],
-      "audit_trail": "EXACT_MATCH: txn_id=TXN7A272A21E5 → settlement=SETB60C3B07D6 (utr=UTRF792E9579BE0) → bank_utr=UTRF792E9579BE0. Amounts: txn=16076.56, gw=16076.56, bank_net=15697.15 (expected_net=15697.15)."
+      "audit_trail": "EXACT_MATCH: txn_id=TXN013E4DDE1C → settlement=SET4C7CDB2987 (utr=UTR19C75E5DEC88) → bank_utr=UTR19C75E5DEC88. Amounts: txn=16076.56, gw=16076.56, bank_net=15697.15 (expected_net=15697.15)."
     },
     {
-      "txn_id": "TXN3A76C661CC",
+      "txn_id": "TXNF099B7D575",
       "match_status": "MATCHED",
       "confidence_score": 1.0,
       "matched_against": [
-        "SET4ED7BED0E6",
-        "UTR4B288F0EDD59"
+        "SET0F172D8804",
+        "UTR927BEE455999"
       ],
-      "audit_trail": "EXACT_MATCH: txn_id=TXN3A76C661CC → settlement=SET4ED7BED0E6 (utr=UTR4B288F0EDD59) → bank_utr=UTR4B288F0EDD59. Amounts: txn=45770.11, gw=45770.11, bank_net=44689.94 (expected_net=44689.94)."
+      "audit_trail": "EXACT_MATCH: txn_id=TXNF099B7D575 → settlement=SET0F172D8804 (utr=UTR927BEE455999) → bank_utr=UTR927BEE455999. Amounts: txn=45770.11, gw=45770.11, bank_net=44689.94 (expected_net=44689.94)."
     },
     {
-      "txn_id": "TXNFAFE707FCA",
+      "txn_id": "TXNA53788E08E",
       "match_status": "MATCHED",
       "confidence_score": 1.0,
       "matched_against": [
-        "SET5FC194CFBC",
-        "UTR27A5CD18FE1C"
+        "SETAA1FD1DA89",
+        "UTR9CEC0AB3F701"
       ],
-      "audit_trail": "EXACT_MATCH: txn_id=TXNFAFE707FCA → settlement=SET5FC194CFBC (utr=UTR27A5CD18FE1C) → bank_utr=UTR27A5CD18FE1C. Amounts: txn=7411.7, gw=7411.7, bank_net=7236.79 (expected_net=7236.79)."
+      "audit_trail": "EXACT_MATCH: txn_id=TXNA53788E08E → settlement=SETAA1FD1DA89 (utr=UTR9CEC0AB3F701) → bank_utr=UTR9CEC0AB3F701. Amounts: txn=7411.7, gw=7411.7, bank_net=7236.79 (expected_net=7236.79)."
     },
     {
-      "txn_id": "TXNC9086ED3BA",
+      "txn_id": "TXN466123C462",
       "match_status": "MATCHED",
       "confidence_score": 1.0,
       "matched_against": [
-        "SET8F0F9A0DE5",
-        "UTR04D5F1BCD044"
+        "SET5BF317D69D",
+        "UTRF2075EC11AC5"
       ],
-      "audit_trail": "EXACT_MATCH: txn_id=TXNC9086ED3BA → settlement=SET8F0F9A0DE5 (utr=UTR04D5F1BCD044) → bank_utr=UTR04D5F1BCD044. Amounts: txn=37477.18, gw=37477.18, bank_net=36592.72 (expected_net=36592.72)."
+      "audit_trail": "EXACT_MATCH: txn_id=TXN466123C462 → settlement=SET5BF317D69D (utr=UTRF2075EC11AC5) → bank_utr=UTRF2075EC11AC5. Amounts: txn=37477.18, gw=37477.18, bank_net=36592.72 (expected_net=36592.72)."
     },
     {
-      "txn_id": "TXNF75BCDEF99",
+      "txn_id": "TXN340E0FB07A",
       "match_status": "MATCHED",
       "confidence_score": 1.0,
       "matched_against": [
-        "SET4DC7A5C40A",
-        "UTR5E83012DBCC6"
+        "SET06DC47BB9F",
+        "UTR3522F8C7A9D0"
       ],
-      "audit_trail": "EXACT_MATCH: txn_id=TXNF75BCDEF99 → settlement=SET4DC7A5C40A (utr=UTR5E83012DBCC6) → bank_utr=UTR5E83012DBCC6. Amounts: txn=20270.33, gw=20270.33, bank_net=19791.95 (expected_net=19791.95)."
+      "audit_trail": "EXACT_MATCH: txn_id=TXN340E0FB07A → settlement=SET06DC47BB9F (utr=UTR3522F8C7A9D0) → bank_utr=UTR3522F8C7A9D0. Amounts: txn=20270.33, gw=20270.33, bank_net=19791.95 (expected_net=19791.95)."
     },
     {
-      "txn_id": "TXNB3A0E052C3",
+      "txn_id": "TXN5B7723BF6D",
       "match_status": "MATCHED",
       "confidence_score": 1.0,
       "matched_against": [
-        "SET02BF12CAF4",
-        "UTR0FD0055AF1DF"
+        "SET9B0DD0F93A",
+        "UTR6F698B2EF7E1"
       ],
-      "audit_trail": "EXACT_MATCH: txn_id=TXNB3A0E052C3 → settlement=SET02BF12CAF4 (utr=UTR0FD0055AF1DF) → bank_utr=UTR0FD0055AF1DF. Amounts: txn=7347.42, gw=7347.42, bank_net=7174.02 (expected_net=7174.02)."
+      "audit_trail": "EXACT_MATCH: txn_id=TXN5B7723BF6D → settlement=SET9B0DD0F93A (utr=UTR6F698B2EF7E1) → bank_utr=UTR6F698B2EF7E1. Amounts: txn=7347.42, gw=7347.42, bank_net=7174.02 (expected_net=7174.02)."
     },
     {
-      "txn_id": "TXN05DE837757",
+      "txn_id": "TXNFAD8FE0ECF",
       "match_status": "MATCHED",
       "confidence_score": 1.0,
       "matched_against": [
-        "SETAEEA71A94C",
-        "UTR123678406283"
+        "SETA12171891A",
+        "UTR378BBF432D69"
       ],
-      "audit_trail": "EXACT_MATCH: txn_id=TXN05DE837757 → settlement=SETAEEA71A94C (utr=UTR123678406283) → bank_utr=UTR123678406283. Amounts: txn=2832.26, gw=2832.26, bank_net=2765.41 (expected_net=2765.41)."
+      "audit_trail": "EXACT_MATCH: txn_id=TXNFAD8FE0ECF → settlement=SETA12171891A (utr=UTR378BBF432D69) → bank_utr=UTR378BBF432D69. Amounts: txn=2832.26, gw=2832.26, bank_net=2765.41 (expected_net=2765.41)."
     },
     {
-      "txn_id": "TXNC07E047823",
+      "txn_id": "TXNE846DCCCD1",
       "match_status": "MATCHED",
       "confidence_score": 1.0,
       "matched_against": [
-        "SET8DED529460",
-        "UTRC3960432F55D"
+        "SET2F48B3EBEE",
+        "UTR7BFB748AA4BD"
       ],
-      "audit_trail": "EXACT_MATCH: txn_id=TXNC07E047823 → settlement=SET8DED529460 (utr=UTRC3960432F55D) → bank_utr=UTRC3960432F55D. Amounts: txn=8419.11, gw=8419.11, bank_net=8220.42 (expected_net=8220.42)."
+      "audit_trail": "EXACT_MATCH: txn_id=TXNE846DCCCD1 → settlement=SET2F48B3EBEE (utr=UTR7BFB748AA4BD) → bank_utr=UTR7BFB748AA4BD. Amounts: txn=8419.11, gw=8419.11, bank_net=8220.42 (expected_net=8220.42)."
     },
     {
-      "txn_id": "TXNF71212C5AD",
+      "txn_id": "TXNF8E36AFA04",
       "match_status": "MATCHED",
       "confidence_score": 1.0,
       "matched_against": [
-        "SET0A070E0B3D",
-        "UTRC3803176A4D7"
+        "SET15908B1E5A",
+        "UTR9ECF24402B03"
       ],
-      "audit_trail": "EXACT_MATCH: txn_id=TXNF71212C5AD → settlement=SET0A070E0B3D (utr=UTRC3803176A4D7) → bank_utr=UTRC3803176A4D7. Amounts: txn=19545.98, gw=19545.98, bank_net=19084.69 (expected_net=19084.69)."
+      "audit_trail": "EXACT_MATCH: txn_id=TXNF8E36AFA04 → settlement=SET15908B1E5A (utr=UTR9ECF24402B03) → bank_utr=UTR9ECF24402B03. Amounts: txn=19545.98, gw=19545.98, bank_net=19084.69 (expected_net=19084.69)."
     },
     {
-      "txn_id": "TXN32A2CEC788",
+      "txn_id": "TXN0FBC57D608",
       "match_status": "MATCHED",
       "confidence_score": 1.0,
       "matched_against": [
-        "SET3E2CCB9F4A",
-        "UTR2D29CF3969C1"
+        "SET08B2A714D5",
+        "UTRB7EB843184BA"
       ],
-      "audit_trail": "EXACT_MATCH: txn_id=TXN32A2CEC788 → settlement=SET3E2CCB9F4A (utr=UTR2D29CF3969C1) → bank_utr=UTR2D29CF3969C1. Amounts: txn=26691.16, gw=26691.16, bank_net=26061.25 (expected_net=26061.25)."
+      "audit_trail": "EXACT_MATCH: txn_id=TXN0FBC57D608 → settlement=SET08B2A714D5 (utr=UTRB7EB843184BA) → bank_utr=UTRB7EB843184BA. Amounts: txn=26691.16, gw=26691.16, bank_net=26061.25 (expected_net=26061.25)."
     },
     {
-      "txn_id": "TXN120DFE2691",
+      "txn_id": "TXN9FCCB49546",
       "match_status": "MATCHED",
       "confidence_score": 1.0,
       "matched_against": [
-        "SET8B0E43AF3E",
-        "UTR521C744BDB35"
+        "SETFBE73BA569",
+        "UTR98B59D58AC29"
       ],
-      "audit_trail": "EXACT_MATCH: txn_id=TXN120DFE2691 → settlement=SET8B0E43AF3E (utr=UTR521C744BDB35) → bank_utr=UTR521C744BDB35. Amounts: txn=1068.31, gw=1068.31, bank_net=1043.09 (expected_net=1043.09)."
+      "audit_trail": "EXACT_MATCH: txn_id=TXN9FCCB49546 → settlement=SETFBE73BA569 (utr=UTR98B59D58AC29) → bank_utr=UTR98B59D58AC29. Amounts: txn=1068.31, gw=1068.31, bank_net=1043.09 (expected_net=1043.09)."
     },
     {
-      "txn_id": "TXN54EF3DB0A5",
+      "txn_id": "TXN9FF124512C",
       "match_status": "MATCHED",
       "confidence_score": 1.0,
       "matched_against": [
-        "SET3A55798146",
-        "UTRAA88CC0CA0AE"
+        "SET42075751B5",
+        "UTR7FCE47CC1BBB"
       ],
-      "audit_trail": "EXACT_MATCH: txn_id=TXN54EF3DB0A5 → settlement=SET3A55798146 (utr=UTRAA88CC0CA0AE) → bank_utr=UTRAA88CC0CA0AE. Amounts: txn=27080.03, gw=27080.03, bank_net=26440.94 (expected_net=26440.94)."
+      "audit_trail": "EXACT_MATCH: txn_id=TXN9FF124512C → settlement=SET42075751B5 (utr=UTR7FCE47CC1BBB) → bank_utr=UTR7FCE47CC1BBB. Amounts: txn=27080.03, gw=27080.03, bank_net=26440.94 (expected_net=26440.94)."
     },
     {
-      "txn_id": "TXNB1C2EDCFA1",
+      "txn_id": "TXN3622CFFC62",
       "match_status": "MATCHED",
       "confidence_score": 1.0,
       "matched_against": [
-        "SETD51E270C8A",
-        "UTR1885A8760DEC"
+        "SET635058856D",
+        "UTR01E436EDA819"
       ],
-      "audit_trail": "EXACT_MATCH: txn_id=TXNB1C2EDCFA1 → settlement=SETD51E270C8A (utr=UTR1885A8760DEC) → bank_utr=UTR1885A8760DEC. Amounts: txn=17338.69, gw=17338.69, bank_net=16929.5 (expected_net=16929.5)."
+      "audit_trail": "EXACT_MATCH: txn_id=TXN3622CFFC62 → settlement=SET635058856D (utr=UTR01E436EDA819) → bank_utr=UTR01E436EDA819. Amounts: txn=17338.69, gw=17338.69, bank_net=16929.5 (expected_net=16929.5)."
     },
     {
-      "txn_id": "TXN56A48CA64F",
+      "txn_id": "TXN8C84C19969",
       "match_status": "MATCHED",
       "confidence_score": 1.0,
       "matched_against": [
-        "SET07373BC148",
-        "UTR25A16CEA6348"
+        "SETD35568BB76",
+        "UTR50CA42673928"
       ],
-      "audit_trail": "EXACT_MATCH: txn_id=TXN56A48CA64F → settlement=SET07373BC148 (utr=UTR25A16CEA6348) → bank_utr=UTR25A16CEA6348. Amounts: txn=22959.32, gw=22959.32, bank_net=22417.48 (expected_net=22417.48)."
+      "audit_trail": "EXACT_MATCH: txn_id=TXN8C84C19969 → settlement=SETD35568BB76 (utr=UTR50CA42673928) → bank_utr=UTR50CA42673928. Amounts: txn=22959.32, gw=22959.32, bank_net=22417.48 (expected_net=22417.48)."
     },
     {
-      "txn_id": "TXN812B9AC9BF",
+      "txn_id": "TXN62696F1686",
       "match_status": "MATCHED",
       "confidence_score": 1.0,
       "matched_against": [
-        "SETFE8155B635",
-        "UTRCCA0083E3088"
+        "SET95EA591693",
+        "UTRB86EBD023C44"
       ],
-      "audit_trail": "EXACT_MATCH: txn_id=TXN812B9AC9BF → settlement=SETFE8155B635 (utr=UTRCCA0083E3088) → bank_utr=UTRCCA0083E3088. Amounts: txn=38217.13, gw=38217.13, bank_net=37315.21 (expected_net=37315.21)."
+      "audit_trail": "EXACT_MATCH: txn_id=TXN62696F1686 → settlement=SET95EA591693 (utr=UTRB86EBD023C44) → bank_utr=UTRB86EBD023C44. Amounts: txn=38217.13, gw=38217.13, bank_net=37315.21 (expected_net=37315.21)."
     },
     {
-      "txn_id": "TXN2BF82FC7F5",
+      "txn_id": "TXNB6F347BF56",
       "match_status": "MATCHED",
       "confidence_score": 1.0,
       "matched_against": [
-        "SET92917302EC",
-        "UTR5E64166D665C"
+        "SET2940E784F6",
+        "UTR3953A2848662"
       ],
-      "audit_trail": "EXACT_MATCH: txn_id=TXN2BF82FC7F5 → settlement=SET92917302EC (utr=UTR5E64166D665C) → bank_utr=UTR5E64166D665C. Amounts: txn=43590.67, gw=43590.67, bank_net=42561.93 (expected_net=42561.93)."
+      "audit_trail": "EXACT_MATCH: txn_id=TXNB6F347BF56 → settlement=SET2940E784F6 (utr=UTR3953A2848662) → bank_utr=UTR3953A2848662. Amounts: txn=43590.67, gw=43590.67, bank_net=42561.93 (expected_net=42561.93)."
     },
     {
-      "txn_id": "TXN50AE965943",
+      "txn_id": "TXN0E4F6D3970",
       "match_status": "MATCHED",
       "confidence_score": 1.0,
       "matched_against": [
-        "SETC7B55E512B",
-        "UTR98DF66E7505A"
+        "SET844F31E552",
+        "UTRD38017C1E018"
       ],
-      "audit_trail": "EXACT_MATCH: txn_id=TXN50AE965943 → settlement=SETC7B55E512B (utr=UTR98DF66E7505A) → bank_utr=UTR98DF66E7505A. Amounts: txn=25629.31, gw=25629.31, bank_net=25024.45 (expected_net=25024.45)."
+      "audit_trail": "EXACT_MATCH: txn_id=TXN0E4F6D3970 → settlement=SET844F31E552 (utr=UTRD38017C1E018) → bank_utr=UTRD38017C1E018. Amounts: txn=25629.31, gw=25629.31, bank_net=25024.45 (expected_net=25024.45)."
     },
     {
-      "txn_id": "TXN05480F16DA",
+      "txn_id": "TXND10A9A6B63",
       "match_status": "MATCHED",
       "confidence_score": 1.0,
       "matched_against": [
-        "SET35CBC2B6CB",
-        "UTR803DC17C96D6"
+        "SET438143AD43",
+        "UTR6580F9A15D1E"
       ],
-      "audit_trail": "EXACT_MATCH: txn_id=TXN05480F16DA → settlement=SET35CBC2B6CB (utr=UTR803DC17C96D6) → bank_utr=UTR803DC17C96D6. Amounts: txn=38244.28, gw=38244.28, bank_net=37341.71 (expected_net=37341.71)."
+      "audit_trail": "EXACT_MATCH: txn_id=TXND10A9A6B63 → settlement=SET438143AD43 (utr=UTR6580F9A15D1E) → bank_utr=UTR6580F9A15D1E. Amounts: txn=38244.28, gw=38244.28, bank_net=37341.71 (expected_net=37341.71)."
     },
     {
-      "txn_id": "TXN5BA8363C12",
+      "txn_id": "TXN0A3217AE92",
       "match_status": "MATCHED",
       "confidence_score": 1.0,
       "matched_against": [
-        "SET36E548F785",
-        "UTRD85C4980B962"
+        "SET1EA1A7BD3C",
+        "UTR92009560CDDE"
       ],
-      "audit_trail": "EXACT_MATCH: txn_id=TXN5BA8363C12 → settlement=SET36E548F785 (utr=UTRD85C4980B962) → bank_utr=UTRD85C4980B962. Amounts: txn=46160.49, gw=46160.49, bank_net=45071.1 (expected_net=45071.1)."
+      "audit_trail": "EXACT_MATCH: txn_id=TXN0A3217AE92 → settlement=SET1EA1A7BD3C (utr=UTR92009560CDDE) → bank_utr=UTR92009560CDDE. Amounts: txn=46160.49, gw=46160.49, bank_net=45071.1 (expected_net=45071.1)."
     },
     {
-      "txn_id": "TXNDF7B5CA9B7",
+      "txn_id": "TXNBACE0DBDCC",
       "match_status": "MATCHED",
       "confidence_score": 1.0,
       "matched_against": [
-        "SET96F3D3D095",
-        "UTRB98F84002AC7"
+        "SET85F23D074D",
+        "UTR39F5F583F70D"
       ],
-      "audit_trail": "EXACT_MATCH: txn_id=TXNDF7B5CA9B7 → settlement=SET96F3D3D095 (utr=UTRB98F84002AC7) → bank_utr=UTRB98F84002AC7. Amounts: txn=24685.98, gw=24685.98, bank_net=24103.39 (expected_net=24103.39)."
+      "audit_trail": "EXACT_MATCH: txn_id=TXNBACE0DBDCC → settlement=SET85F23D074D (utr=UTR39F5F583F70D) → bank_utr=UTR39F5F583F70D. Amounts: txn=24685.98, gw=24685.98, bank_net=24103.39 (expected_net=24103.39)."
     },
     {
-      "txn_id": "TXNF2303A71BB",
+      "txn_id": "TXN2AA5876C8A",
       "match_status": "MATCHED",
       "confidence_score": 1.0,
       "matched_against": [
-        "SET317E9252FF",
-        "UTR434FDAC56C87"
+        "SET96495C6984",
+        "UTRE8118DF2F2F2"
       ],
-      "audit_trail": "EXACT_MATCH: txn_id=TXNF2303A71BB → settlement=SET317E9252FF (utr=UTR434FDAC56C87) → bank_utr=UTR434FDAC56C87. Amounts: txn=43996.73, gw=43996.73, bank_net=42958.41 (expected_net=42958.41)."
+      "audit_trail": "EXACT_MATCH: txn_id=TXN2AA5876C8A → settlement=SET96495C6984 (utr=UTRE8118DF2F2F2) → bank_utr=UTRE8118DF2F2F2. Amounts: txn=43996.73, gw=43996.73, bank_net=42958.41 (expected_net=42958.41)."
     },
     {
-      "txn_id": "TXN1AC8C46AF3",
+      "txn_id": "TXN840672D6A5",
       "match_status": "MATCHED",
       "confidence_score": 1.0,
       "matched_against": [
-        "SETB27122E703",
-        "UTR7B396B58F481"
+        "SETA3E3E9C6CD",
+        "UTR59773456A718"
       ],
-      "audit_trail": "EXACT_MATCH: txn_id=TXN1AC8C46AF3 → settlement=SETB27122E703 (utr=UTR7B396B58F481) → bank_utr=UTR7B396B58F481. Amounts: txn=12423.14, gw=12423.14, bank_net=12129.96 (expected_net=12129.96)."
+      "audit_trail": "EXACT_MATCH: txn_id=TXN840672D6A5 → settlement=SETA3E3E9C6CD (utr=UTR59773456A718) → bank_utr=UTR59773456A718. Amounts: txn=12423.14, gw=12423.14, bank_net=12129.96 (expected_net=12129.96)."
     },
     {
-      "txn_id": "TXN85C19799A9",
+      "txn_id": "TXNEAB3E29E49",
       "match_status": "MATCHED",
       "confidence_score": 1.0,
       "matched_against": [
-        "SETCE74403FC3",
-        "UTRE4B8E988273C"
+        "SETAE05EFC650",
+        "UTRB4113CBA303A"
       ],
-      "audit_trail": "EXACT_MATCH: txn_id=TXN85C19799A9 → settlement=SETCE74403FC3 (utr=UTRE4B8E988273C) → bank_utr=UTRE4B8E988273C. Amounts: txn=4739.85, gw=4739.85, bank_net=4627.99 (expected_net=4627.99)."
+      "audit_trail": "EXACT_MATCH: txn_id=TXNEAB3E29E49 → settlement=SETAE05EFC650 (utr=UTRB4113CBA303A) → bank_utr=UTRB4113CBA303A. Amounts: txn=4739.85, gw=4739.85, bank_net=4627.99 (expected_net=4627.99)."
     },
     {
-      "txn_id": "TXN94D1041A6B",
+      "txn_id": "TXN9E25F65537",
       "match_status": "MATCHED",
       "confidence_score": 1.0,
       "matched_against": [
-        "SET2A50BD350D",
-        "UTR048B025DE984"
+        "SET1BCF073CAE",
+        "UTRC2945C60E8EC"
       ],
-      "audit_trail": "EXACT_MATCH: txn_id=TXN94D1041A6B → settlement=SET2A50BD350D (utr=UTR048B025DE984) → bank_utr=UTR048B025DE984. Amounts: txn=48910.23, gw=48910.23, bank_net=47755.95 (expected_net=47755.95)."
+      "audit_trail": "EXACT_MATCH: txn_id=TXN9E25F65537 → settlement=SET1BCF073CAE (utr=UTRC2945C60E8EC) → bank_utr=UTRC2945C60E8EC. Amounts: txn=48910.23, gw=48910.23, bank_net=47755.95 (expected_net=47755.95)."
     },
     {
-      "txn_id": "TXN200A69A92F",
+      "txn_id": "TXN64E85C794F",
       "match_status": "MATCHED",
       "confidence_score": 1.0,
       "matched_against": [
-        "SET7D55273E73",
-        "UTR2536B12A969F"
+        "SET838513A24D",
+        "UTRCE5F956C904D"
       ],
-      "audit_trail": "EXACT_MATCH: txn_id=TXN200A69A92F → settlement=SET7D55273E73 (utr=UTR2536B12A969F) → bank_utr=UTR2536B12A969F. Amounts: txn=6855.38, gw=6855.38, bank_net=6693.59 (expected_net=6693.59)."
+      "audit_trail": "EXACT_MATCH: txn_id=TXN64E85C794F → settlement=SET838513A24D (utr=UTRCE5F956C904D) → bank_utr=UTRCE5F956C904D. Amounts: txn=6855.38, gw=6855.38, bank_net=6693.59 (expected_net=6693.59)."
     },
     {
-      "txn_id": "TXN54C9EA2E89",
+      "txn_id": "TXN4B113AA379",
       "match_status": "MATCHED",
       "confidence_score": 1.0,
       "matched_against": [
-        "SET6BA44FD9D9",
-        "UTR9484BAA4FBF3"
+        "SET11502AFA0A",
+        "UTRF638C42A2265"
       ],
-      "audit_trail": "EXACT_MATCH: txn_id=TXN54C9EA2E89 → settlement=SET6BA44FD9D9 (utr=UTR9484BAA4FBF3) → bank_utr=UTR9484BAA4FBF3. Amounts: txn=8673.78, gw=8673.78, bank_net=8469.07 (expected_net=8469.07)."
+      "audit_trail": "EXACT_MATCH: txn_id=TXN4B113AA379 → settlement=SET11502AFA0A (utr=UTRF638C42A2265) → bank_utr=UTRF638C42A2265. Amounts: txn=8673.78, gw=8673.78, bank_net=8469.07 (expected_net=8469.07)."
     },
     {
-      "txn_id": "TXNCF04C52DA5",
+      "txn_id": "TXND20C6583C4",
       "match_status": "MATCHED",
       "confidence_score": 1.0,
       "matched_against": [
-        "SET52B79BE45D",
-        "UTR13039449A664"
+        "SET0CDD306840",
+        "UTR878412C543DB"
       ],
-      "audit_trail": "EXACT_MATCH: txn_id=TXNCF04C52DA5 → settlement=SET52B79BE45D (utr=UTR13039449A664) → bank_utr=UTR13039449A664. Amounts: txn=21445.33, gw=21445.33, bank_net=20939.22 (expected_net=20939.22)."
+      "audit_trail": "EXACT_MATCH: txn_id=TXND20C6583C4 → settlement=SET0CDD306840 (utr=UTR878412C543DB) → bank_utr=UTR878412C543DB. Amounts: txn=21445.33, gw=21445.33, bank_net=20939.22 (expected_net=20939.22)."
     },
     {
-      "txn_id": "TXN8EC4012A98",
+      "txn_id": "TXN0B0C933F28",
       "match_status": "MATCHED",
       "confidence_score": 1.0,
       "matched_against": [
-        "SETE285A5C9C7",
-        "UTR921FE39A8147"
+        "SET5E93A3AD86",
+        "UTR11441AC7FEF5"
       ],
-      "audit_trail": "EXACT_MATCH: txn_id=TXN8EC4012A98 → settlement=SETE285A5C9C7 (utr=UTR921FE39A8147) → bank_utr=UTR921FE39A8147. Amounts: txn=37885.63, gw=37885.63, bank_net=36991.53 (expected_net=36991.53)."
+      "audit_trail": "EXACT_MATCH: txn_id=TXN0B0C933F28 → settlement=SET5E93A3AD86 (utr=UTR11441AC7FEF5) → bank_utr=UTR11441AC7FEF5. Amounts: txn=37885.63, gw=37885.63, bank_net=36991.53 (expected_net=36991.53)."
     },
     {
-      "txn_id": "TXN1682C0D056",
+      "txn_id": "TXNDC0C5B1553",
       "match_status": "MATCHED",
       "confidence_score": 1.0,
       "matched_against": [
-        "SETDF5FBBD29D",
-        "UTR94A4C3F18ADA"
+        "SET5452D1FE73",
+        "UTR8E94A0636326"
       ],
-      "audit_trail": "EXACT_MATCH: txn_id=TXN1682C0D056 → settlement=SETDF5FBBD29D (utr=UTR94A4C3F18ADA) → bank_utr=UTR94A4C3F18ADA. Amounts: txn=20250.12, gw=20250.12, bank_net=19772.22 (expected_net=19772.22)."
+      "audit_trail": "EXACT_MATCH: txn_id=TXNDC0C5B1553 → settlement=SET5452D1FE73 (utr=UTR8E94A0636326) → bank_utr=UTR8E94A0636326. Amounts: txn=20250.12, gw=20250.12, bank_net=19772.22 (expected_net=19772.22)."
     },
     {
-      "txn_id": "TXN17F00AD169",
+      "txn_id": "TXNDA361D7AE9",
       "match_status": "MATCHED",
       "confidence_score": 1.0,
       "matched_against": [
-        "SET5C25495897",
-        "UTR81BEE516340F"
+        "SETCD6E1D0E5F",
+        "UTRDAE4DF32B8F2"
       ],
-      "audit_trail": "EXACT_MATCH: txn_id=TXN17F00AD169 → settlement=SET5C25495897 (utr=UTR81BEE516340F) → bank_utr=UTR81BEE516340F. Amounts: txn=26120.0, gw=26120.0, bank_net=25503.57 (expected_net=25503.57)."
+      "audit_trail": "EXACT_MATCH: txn_id=TXNDA361D7AE9 → settlement=SETCD6E1D0E5F (utr=UTRDAE4DF32B8F2) → bank_utr=UTRDAE4DF32B8F2. Amounts: txn=26120.0, gw=26120.0, bank_net=25503.57 (expected_net=25503.57)."
     },
     {
-      "txn_id": "TXN11E59C8FAC",
+      "txn_id": "TXN3DE6C26558",
       "match_status": "MATCHED",
       "confidence_score": 1.0,
       "matched_against": [
-        "SET674FF4579C",
-        "UTRA89C60398102"
+        "SET596647ACBF",
+        "UTR55E31E4B40BB"
       ],
-      "audit_trail": "EXACT_MATCH: txn_id=TXN11E59C8FAC → settlement=SET674FF4579C (utr=UTRA89C60398102) → bank_utr=UTRA89C60398102. Amounts: txn=3669.28, gw=3669.28, bank_net=3582.68 (expected_net=3582.68)."
+      "audit_trail": "EXACT_MATCH: txn_id=TXN3DE6C26558 → settlement=SET596647ACBF (utr=UTR55E31E4B40BB) → bank_utr=UTR55E31E4B40BB. Amounts: txn=3669.28, gw=3669.28, bank_net=3582.68 (expected_net=3582.68)."
     },
     {
-      "txn_id": "TXNA16A538F87",
+      "txn_id": "TXNF5975E2A79",
       "match_status": "MATCHED",
       "confidence_score": 1.0,
       "matched_against": [
-        "SETAF6714CAE3",
-        "UTRF4F25E3C67AC"
+        "SET994D5F8075",
+        "UTR38981D8EFBEA"
       ],
-      "audit_trail": "EXACT_MATCH: txn_id=TXNA16A538F87 → settlement=SETAF6714CAE3 (utr=UTRF4F25E3C67AC) → bank_utr=UTRF4F25E3C67AC. Amounts: txn=11890.68, gw=11890.68, bank_net=11610.06 (expected_net=11610.06)."
+      "audit_trail": "EXACT_MATCH: txn_id=TXNF5975E2A79 → settlement=SET994D5F8075 (utr=UTR38981D8EFBEA) → bank_utr=UTR38981D8EFBEA. Amounts: txn=11890.68, gw=11890.68, bank_net=11610.06 (expected_net=11610.06)."
     },
     {
-      "txn_id": "TXNCE33677603",
+      "txn_id": "TXN4FCDE697BB",
       "match_status": "MATCHED",
       "confidence_score": 1.0,
       "matched_against": [
-        "SET0DFF15B919",
-        "UTR7F2B10EC4026"
+        "SETC405567BDB",
+        "UTR9D48B1516DBC"
       ],
-      "audit_trail": "EXACT_MATCH: txn_id=TXNCE33677603 → settlement=SET0DFF15B919 (utr=UTR7F2B10EC4026) → bank_utr=UTR7F2B10EC4026. Amounts: txn=35538.13, gw=35538.13, bank_net=34699.43 (expected_net=34699.43)."
+      "audit_trail": "EXACT_MATCH: txn_id=TXN4FCDE697BB → settlement=SETC405567BDB (utr=UTR9D48B1516DBC) → bank_utr=UTR9D48B1516DBC. Amounts: txn=35538.13, gw=35538.13, bank_net=34699.43 (expected_net=34699.43)."
     },
     {
-      "txn_id": "TXN83143C779D",
+      "txn_id": "TXNB2B95C229E",
       "match_status": "MATCHED",
       "confidence_score": 1.0,
       "matched_against": [
-        "SET6E18057245",
-        "UTRDC3B0C72E5CC"
+        "SETF3B383B969",
+        "UTRA045867E0EF4"
       ],
-      "audit_trail": "EXACT_MATCH: txn_id=TXN83143C779D → settlement=SET6E18057245 (utr=UTRDC3B0C72E5CC) → bank_utr=UTRDC3B0C72E5CC. Amounts: txn=45318.29, gw=45318.29, bank_net=44248.77 (expected_net=44248.77)."
+      "audit_trail": "EXACT_MATCH: txn_id=TXNB2B95C229E → settlement=SETF3B383B969 (utr=UTRA045867E0EF4) → bank_utr=UTRA045867E0EF4. Amounts: txn=45318.29, gw=45318.29, bank_net=44248.77 (expected_net=44248.77)."
     },
     {
-      "txn_id": "TXN346713DC02",
+      "txn_id": "TXNC903212278",
       "match_status": "MATCHED",
       "confidence_score": 1.0,
       "matched_against": [
-        "SETB3D6A92ADE",
-        "UTR2335CB826056"
+        "SET81080C3360",
+        "UTR3913A54A2E61"
       ],
-      "audit_trail": "EXACT_MATCH: txn_id=TXN346713DC02 → settlement=SETB3D6A92ADE (utr=UTR2335CB826056) → bank_utr=UTR2335CB826056. Amounts: txn=12281.23, gw=12281.23, bank_net=11991.4 (expected_net=11991.4)."
+      "audit_trail": "EXACT_MATCH: txn_id=TXNC903212278 → settlement=SET81080C3360 (utr=UTR3913A54A2E61) → bank_utr=UTR3913A54A2E61. Amounts: txn=12281.23, gw=12281.23, bank_net=11991.4 (expected_net=11991.4)."
     },
     {
-      "txn_id": "TXN8966AA351B",
+      "txn_id": "TXN4865BE659A",
       "match_status": "MATCHED",
       "confidence_score": 0.9,
       "matched_against": [
-        "SET80640E1658",
-        "UTR43087F3A5D0F"
+        "SETF5D87959C8",
+        "UTR9ADC27471175"
       ],
-      "audit_trail": "TOLERANCE_MATCH: txn_id=TXN8966AA351B → settlement=SET80640E1658. Amount diff=₹0.25 ≤ tolerance=₹1.0. Likely fee/tax rounding artefact."
+      "audit_trail": "TOLERANCE_MATCH: txn_id=TXN4865BE659A → settlement=SETF5D87959C8. Amount diff=₹0.25 ≤ tolerance=₹1.0. Likely fee/tax rounding artefact."
     },
     {
-      "txn_id": "TXNAD408A1760",
+      "txn_id": "TXNCD8AB068E2",
       "match_status": "MATCHED",
       "confidence_score": 0.9,
       "matched_against": [
-        "SET89859AF2BA",
-        "UTR286754259D9E"
+        "SET0A2212C2F3",
+        "UTRF3C48A5BF88E"
       ],
-      "audit_trail": "TOLERANCE_MATCH: txn_id=TXNAD408A1760 → settlement=SET89859AF2BA. Amount diff=₹0.10 ≤ tolerance=₹1.0. Likely fee/tax rounding artefact."
+      "audit_trail": "TOLERANCE_MATCH: txn_id=TXNCD8AB068E2 → settlement=SET0A2212C2F3. Amount diff=₹0.10 ≤ tolerance=₹1.0. Likely fee/tax rounding artefact."
     },
     {
-      "txn_id": "TXN7B86167094",
+      "txn_id": "TXN71D474360E",
       "match_status": "MATCHED",
       "confidence_score": 0.9,
       "matched_against": [
-        "SET189573024C",
-        "UTR99BE478FBEB9"
+        "SET37BC1AC044",
+        "UTR6712DE56C725"
       ],
-      "audit_trail": "TOLERANCE_MATCH: txn_id=TXN7B86167094 → settlement=SET189573024C. Amount diff=₹0.86 ≤ tolerance=₹1.0. Likely fee/tax rounding artefact."
+      "audit_trail": "TOLERANCE_MATCH: txn_id=TXN71D474360E → settlement=SET37BC1AC044. Amount diff=₹0.86 ≤ tolerance=₹1.0. Likely fee/tax rounding artefact."
     },
     {
-      "txn_id": "TXN62B3B505B6",
+      "txn_id": "TXN64A4F20273",
       "match_status": "MATCHED",
       "confidence_score": 0.9,
       "matched_against": [
-        "SETC31F5DF68E",
-        "UTRA8DED56CBFCB"
+        "SET43E4F2F961",
+        "UTR0BC4190DE13C"
       ],
-      "audit_trail": "TOLERANCE_MATCH: txn_id=TXN62B3B505B6 → settlement=SETC31F5DF68E. Amount diff=₹0.72 ≤ tolerance=₹1.0. Likely fee/tax rounding artefact."
+      "audit_trail": "TOLERANCE_MATCH: txn_id=TXN64A4F20273 → settlement=SET43E4F2F961. Amount diff=₹0.72 ≤ tolerance=₹1.0. Likely fee/tax rounding artefact."
     },
     {
-      "txn_id": "TXN03125F715A",
+      "txn_id": "TXN349C429896",
       "match_status": "MATCHED",
       "confidence_score": 0.9,
       "matched_against": [
-        "SET321BABB696",
-        "UTR7FA68C4D0BB0"
+        "SET38DA9518CC",
+        "UTR31257CBBC037"
       ],
-      "audit_trail": "TOLERANCE_MATCH: txn_id=TXN03125F715A → settlement=SET321BABB696. Amount diff=₹0.20 ≤ tolerance=₹1.0. Likely fee/tax rounding artefact."
+      "audit_trail": "TOLERANCE_MATCH: txn_id=TXN349C429896 → settlement=SET38DA9518CC. Amount diff=₹0.20 ≤ tolerance=₹1.0. Likely fee/tax rounding artefact."
     },
     {
-      "txn_id": "TXN9C7AC134D5",
+      "txn_id": "TXN43583AF2A1",
       "match_status": "MATCHED",
       "confidence_score": 0.9,
       "matched_against": [
-        "SET481D2B0157",
-        "UTRE5836EA207E9"
+        "SET33ECE9085E",
+        "UTRECBAE5972EE7"
       ],
-      "audit_trail": "TOLERANCE_MATCH: txn_id=TXN9C7AC134D5 → settlement=SET481D2B0157. Amount diff=₹0.46 ≤ tolerance=₹1.0. Likely fee/tax rounding artefact."
+      "audit_trail": "TOLERANCE_MATCH: txn_id=TXN43583AF2A1 → settlement=SET33ECE9085E. Amount diff=₹0.46 ≤ tolerance=₹1.0. Likely fee/tax rounding artefact."
     },
     {
-      "txn_id": "TXN480308347B",
+      "txn_id": "TXN42AA1F72D9",
       "match_status": "MATCHED",
       "confidence_score": 0.9,
       "matched_against": [
-        "SET19653B773B",
-        "UTRE240C7300C05"
+        "SET90AEBA511C",
+        "UTRCB96D06B07F9"
       ],
-      "audit_trail": "TOLERANCE_MATCH: txn_id=TXN480308347B → settlement=SET19653B773B. Amount diff=₹0.85 ≤ tolerance=₹1.0. Likely fee/tax rounding artefact."
+      "audit_trail": "TOLERANCE_MATCH: txn_id=TXN42AA1F72D9 → settlement=SET90AEBA511C. Amount diff=₹0.85 ≤ tolerance=₹1.0. Likely fee/tax rounding artefact."
     },
     {
-      "txn_id": "TXN38FF04B074",
+      "txn_id": "TXNB3B869FD18",
       "match_status": "MATCHED",
       "confidence_score": 0.9,
       "matched_against": [
-        "SETC2356A298D",
-        "UTRA80E05FFC36E"
+        "SETB77DDF9501",
+        "UTRF8EDF82225CD"
       ],
-      "audit_trail": "TOLERANCE_MATCH: txn_id=TXN38FF04B074 → settlement=SETC2356A298D. Amount diff=₹0.54 ≤ tolerance=₹1.0. Likely fee/tax rounding artefact."
+      "audit_trail": "TOLERANCE_MATCH: txn_id=TXNB3B869FD18 → settlement=SETB77DDF9501. Amount diff=₹0.54 ≤ tolerance=₹1.0. Likely fee/tax rounding artefact."
     },
     {
-      "txn_id": "TXNF29383033F",
+      "txn_id": "TXN860F7E25D3",
       "match_status": "MATCHED",
       "confidence_score": 0.9,
       "matched_against": [
-        "SETFCDD4D83D7",
-        "UTR025515EF1E8F"
+        "SETCEC1CB02A3",
+        "UTR8087ED65F622"
       ],
-      "audit_trail": "TOLERANCE_MATCH: txn_id=TXNF29383033F → settlement=SETFCDD4D83D7. Amount diff=₹0.84 ≤ tolerance=₹1.0. Likely fee/tax rounding artefact."
+      "audit_trail": "TOLERANCE_MATCH: txn_id=TXN860F7E25D3 → settlement=SETCEC1CB02A3. Amount diff=₹0.84 ≤ tolerance=₹1.0. Likely fee/tax rounding artefact."
     },
     {
-      "txn_id": "TXN2703F130FF",
+      "txn_id": "TXN3DA2F968C4",
       "match_status": "MATCHED",
       "confidence_score": 0.9,
       "matched_against": [
-        "SETF7CFCE2BE7",
-        "UTR6F326E267268"
+        "SET9498483E77",
+        "UTR1FCFF5D06CC4"
       ],
-      "audit_trail": "TOLERANCE_MATCH: txn_id=TXN2703F130FF → settlement=SETF7CFCE2BE7. Amount diff=₹0.86 ≤ tolerance=₹1.0. Likely fee/tax rounding artefact."
+      "audit_trail": "TOLERANCE_MATCH: txn_id=TXN3DA2F968C4 → settlement=SET9498483E77. Amount diff=₹0.86 ≤ tolerance=₹1.0. Likely fee/tax rounding artefact."
     },
     {
-      "txn_id": "TXN0FCA66947A",
+      "txn_id": "TXN983CC000CC",
       "match_status": "MATCHED",
       "confidence_score": 0.9,
       "matched_against": [
-        "SETF5F2F63EEB",
-        "UTR3237C7974A35"
+        "SET4D504DAA84",
+        "UTR620EDD55762F"
       ],
-      "audit_trail": "TOLERANCE_MATCH: txn_id=TXN0FCA66947A → settlement=SETF5F2F63EEB. Amount diff=₹0.98 ≤ tolerance=₹1.0. Likely fee/tax rounding artefact."
+      "audit_trail": "TOLERANCE_MATCH: txn_id=TXN983CC000CC → settlement=SET4D504DAA84. Amount diff=₹0.98 ≤ tolerance=₹1.0. Likely fee/tax rounding artefact."
     },
     {
-      "txn_id": "TXN7B3865F7D4",
+      "txn_id": "TXND03BB3A652",
       "match_status": "MATCHED",
       "confidence_score": 0.9,
       "matched_against": [
-        "SET31C92D8229",
-        "UTR9C87C8DCF68F"
+        "SET26257501BD",
+        "UTR0793090F0475"
       ],
-      "audit_trail": "TOLERANCE_MATCH: txn_id=TXN7B3865F7D4 → settlement=SET31C92D8229. Amount diff=₹0.69 ≤ tolerance=₹1.0. Likely fee/tax rounding artefact."
+      "audit_trail": "TOLERANCE_MATCH: txn_id=TXND03BB3A652 → settlement=SET26257501BD. Amount diff=₹0.69 ≤ tolerance=₹1.0. Likely fee/tax rounding artefact."
     },
     {
-      "txn_id": "TXNAD50EFD8C2",
+      "txn_id": "TXN761FF57EF8",
       "match_status": "MATCHED",
       "confidence_score": 0.9,
       "matched_against": [
-        "SET02C8044104",
-        "UTR202669E3CA89"
+        "SET0D7A1914E8",
+        "UTRE20707595DED"
       ],
-      "audit_trail": "TOLERANCE_MATCH: txn_id=TXNAD50EFD8C2 → settlement=SET02C8044104. Amount diff=₹0.49 ≤ tolerance=₹1.0. Likely fee/tax rounding artefact."
+      "audit_trail": "TOLERANCE_MATCH: txn_id=TXN761FF57EF8 → settlement=SET0D7A1914E8. Amount diff=₹0.49 ≤ tolerance=₹1.0. Likely fee/tax rounding artefact."
     },
     {
-      "txn_id": "TXNCD084D31B3",
+      "txn_id": "TXN3AF450213D",
       "match_status": "MATCHED",
       "confidence_score": 0.9,
       "matched_against": [
-        "SET803534BEAF",
-        "UTR69F3577AEE16"
+        "SETFFB6B74EA5",
+        "UTRDF177D478E49"
       ],
-      "audit_trail": "TOLERANCE_MATCH: txn_id=TXNCD084D31B3 → settlement=SET803534BEAF. Amount diff=₹0.58 ≤ tolerance=₹1.0. Likely fee/tax rounding artefact."
+      "audit_trail": "TOLERANCE_MATCH: txn_id=TXN3AF450213D → settlement=SETFFB6B74EA5. Amount diff=₹0.58 ≤ tolerance=₹1.0. Likely fee/tax rounding artefact."
     },
     {
-      "txn_id": "TXNEF682170C4",
+      "txn_id": "TXN5D192518CB",
       "match_status": "MATCHED",
       "confidence_score": 0.9,
       "matched_against": [
-        "SETA2174C1A4B",
-        "UTR5CFED1006A6B"
+        "SETD2726344F4",
+        "UTR7EBB496401CB"
       ],
-      "audit_trail": "TOLERANCE_MATCH: txn_id=TXNEF682170C4 → settlement=SETA2174C1A4B. Amount diff=₹0.58 ≤ tolerance=₹1.0. Likely fee/tax rounding artefact."
+      "audit_trail": "TOLERANCE_MATCH: txn_id=TXN5D192518CB → settlement=SETD2726344F4. Amount diff=₹0.58 ≤ tolerance=₹1.0. Likely fee/tax rounding artefact."
     },
     {
-      "txn_id": "TXN92E04BB219",
+      "txn_id": "TXN07F7E1E50E",
       "match_status": "UNMATCHED",
       "confidence_score": 0.0,
       "matched_against": [
-        "SETBD92D92449",
-        "SETF90D537C3D"
+        "SET4DF6BF9C39",
+        "SET49A136FCF4"
       ],
       "audit_trail": "DUPLICATE_SETTLEMENT: 2 settlements found for same txn_id."
     },
     {
-      "txn_id": "TXNFD224222FE",
+      "txn_id": "TXN178624C3CB",
       "match_status": "UNMATCHED",
       "confidence_score": 0.0,
       "matched_against": [
-        "SET9062F290DC",
-        "SET7F4D00C27E"
+        "SET898E9A3583",
+        "SETD3D7AC1121"
       ],
       "audit_trail": "DUPLICATE_SETTLEMENT: 2 settlements found for same txn_id."
     },
     {
-      "txn_id": "TXNB05B330978",
+      "txn_id": "TXN6784E3EBBB",
       "match_status": "UNMATCHED",
       "confidence_score": 0.0,
       "matched_against": [
-        "SETAFB99EB025",
-        "SET0AAFF08E69"
+        "SET7416737257",
+        "SETFF0CCEAD90"
       ],
       "audit_trail": "DUPLICATE_SETTLEMENT: 2 settlements found for same txn_id."
     },
     {
-      "txn_id": "TXNFA7D7A0CB1",
+      "txn_id": "TXNAFF61CC4E7",
       "match_status": "UNMATCHED",
       "confidence_score": 0.0,
       "matched_against": [
-        "SET436C3CDB24",
-        "SET26C6E40FBB"
+        "SETFAC8A567F9",
+        "SET6C4C6D2674"
       ],
       "audit_trail": "DUPLICATE_SETTLEMENT: 2 settlements found for same txn_id."
     },
     {
-      "txn_id": "TXN4BBC148204",
+      "txn_id": "TXN2E1C48D777",
       "match_status": "REVIEW_REQUIRED",
       "confidence_score": 0.75,
       "matched_against": [
-        "SETBC002974F3",
-        "UTR322726C9B54F"
+        "SET8684EDA4D4",
+        "UTRB257AEEB14E8"
       ],
       "audit_trail": "STUB_AGENT: Timing mismatch. Value date is 2.0 days after settlement. REVIEW_REQUIRED (confidence=0.75)."
     },
     {
-      "txn_id": "TXN20974E26DE",
+      "txn_id": "TXN28B646595D",
       "match_status": "REVIEW_REQUIRED",
       "confidence_score": 0.75,
       "matched_against": [
-        "SET791504E49A",
-        "UTRD90D8925AA3B"
+        "SET0E32D5152B",
+        "UTRE5EA3DED84EB"
       ],
       "audit_trail": "STUB_AGENT: Timing mismatch. Value date is 2.0 days after settlement. REVIEW_REQUIRED (confidence=0.75)."
     },
     {
-      "txn_id": "TXNB81665ED74",
+      "txn_id": "TXNE060785672",
       "match_status": "REVIEW_REQUIRED",
       "confidence_score": 0.75,
       "matched_against": [
-        "SET297626D2C4",
-        "UTR5874D919C96C"
+        "SET54209CBF5F",
+        "UTR5C3A78141738"
       ],
       "audit_trail": "STUB_AGENT: Timing mismatch. Value date is 2.0 days after settlement. REVIEW_REQUIRED (confidence=0.75)."
     },
     {
-      "txn_id": "TXN9980F9C98D",
+      "txn_id": "TXNB797A782F9",
       "match_status": "REVIEW_REQUIRED",
       "confidence_score": 0.75,
       "matched_against": [
-        "SET2C50D718C2",
-        "UTR72F7E31020BF"
+        "SET5A153FBC78",
+        "UTR50793C6249E1"
       ],
       "audit_trail": "STUB_AGENT: Timing mismatch. Value date is 2.0 days after settlement. REVIEW_REQUIRED (confidence=0.75)."
     },
     {
-      "txn_id": "TXNF4E4AC1EE1",
+      "txn_id": "TXNC1B5F18908",
       "match_status": "REVIEW_REQUIRED",
       "confidence_score": 0.75,
       "matched_against": [
-        "SETC93B667700",
-        "UTRFB1D0D64584D"
+        "SET89C9846314",
+        "UTRE00B46C9AB75"
       ],
       "audit_trail": "STUB_AGENT: Timing mismatch. Value date is 2.0 days after settlement. REVIEW_REQUIRED (confidence=0.75)."
     },
     {
-      "txn_id": "TXN91E32E6D9C",
+      "txn_id": "TXNEC12CE2AD9",
       "match_status": "REVIEW_REQUIRED",
       "confidence_score": 0.75,
       "matched_against": [
-        "SET791DD6E8D2",
-        "UTRCB4808D30F18"
+        "SET7838321E48",
+        "UTR7304CEE36030"
       ],
       "audit_trail": "STUB_AGENT: Timing mismatch. Value date is 2.0 days after settlement. REVIEW_REQUIRED (confidence=0.75)."
     },
     {
-      "txn_id": "TXN36B37B8CFC",
+      "txn_id": "TXN0D6392AD5E",
       "match_status": "REVIEW_REQUIRED",
       "confidence_score": 0.75,
       "matched_against": [
-        "SET7F322DC505",
-        "UTR1B8CE55BA1E7"
+        "SETB55785CC6E",
+        "UTR3C8DBF2C0054"
       ],
       "audit_trail": "STUB_AGENT: Timing mismatch. Value date is 2.0 days after settlement. REVIEW_REQUIRED (confidence=0.75)."
     },
     {
-      "txn_id": "TXN2BCD14E3ED",
+      "txn_id": "TXNC24D65703B",
       "match_status": "REVIEW_REQUIRED",
       "confidence_score": 0.75,
       "matched_against": [
-        "SET3795ECC9CF",
-        "UTR7C8589863A56"
+        "SETEAE7DE0B45",
+        "UTRDEEC80037DBA"
       ],
       "audit_trail": "STUB_AGENT: Timing mismatch. Value date is 2.0 days after settlement. REVIEW_REQUIRED (confidence=0.75)."
     },
     {
-      "txn_id": "TXN47C363E5E2",
+      "txn_id": "TXN705E6879C7",
       "match_status": "REVIEW_REQUIRED",
       "confidence_score": 0.75,
       "matched_against": [
-        "SETB0D2952488",
-        "UTR3A41CAE75F5E"
+        "SET3CDF69476C",
+        "UTR489DDD778C4D"
       ],
       "audit_trail": "STUB_AGENT: Timing mismatch. Value date is 2.0 days after settlement. REVIEW_REQUIRED (confidence=0.75)."
     },
     {
-      "txn_id": "TXNDCF4E9BC8B",
+      "txn_id": "TXNE5E5F6E4DB",
       "match_status": "REVIEW_REQUIRED",
       "confidence_score": 0.75,
       "matched_against": [
-        "SETA1DD9738F5",
-        "UTR454EF898FCF1"
+        "SET23B11FF76C",
+        "UTRF287419D4D5B"
       ],
       "audit_trail": "STUB_AGENT: Timing mismatch. Value date is 2.0 days after settlement. REVIEW_REQUIRED (confidence=0.75)."
     },
     {
-      "txn_id": "TXNF820B7E694",
+      "txn_id": "TXN6DF68E0E52",
       "match_status": "UNMATCHED",
       "confidence_score": 0.0,
       "matched_against": [
-        "SET7D43F9A249"
+        "SET61986D5C51"
       ],
-      "audit_trail": "STUB_AGENT: Settlement SET7D43F9A249 has empty UTR. Cannot link to bank record."
+      "audit_trail": "STUB_AGENT: Settlement SET61986D5C51 has empty UTR. Cannot link to bank record."
     },
     {
-      "txn_id": "TXN42B9FF9674",
+      "txn_id": "TXN218FE81183",
       "match_status": "UNMATCHED",
       "confidence_score": 0.0,
       "matched_against": [
-        "SETE8FF877EEC"
+        "SETC4E1432EE4"
       ],
-      "audit_trail": "STUB_AGENT: Settlement SETE8FF877EEC has empty UTR. Cannot link to bank record."
+      "audit_trail": "STUB_AGENT: Settlement SETC4E1432EE4 has empty UTR. Cannot link to bank record."
     },
     {
-      "txn_id": "TXN7CA0F4E907",
+      "txn_id": "TXND4C80FB64B",
       "match_status": "UNMATCHED",
       "confidence_score": 0.0,
       "matched_against": [
-        "SET300D60ADFB"
+        "SET4B226D683C"
       ],
-      "audit_trail": "STUB_AGENT: Settlement SET300D60ADFB has empty UTR. Cannot link to bank record."
+      "audit_trail": "STUB_AGENT: Settlement SET4B226D683C has empty UTR. Cannot link to bank record."
     },
     {
-      "txn_id": "TXN6A3C009076",
+      "txn_id": "TXN0802F0066E",
       "match_status": "UNMATCHED",
       "confidence_score": 0.0,
       "matched_against": [
-        "SET59D103F5C2"
+        "SETA6FB4A0945"
       ],
-      "audit_trail": "STUB_AGENT: Settlement SET59D103F5C2 has empty UTR. Cannot link to bank record."
+      "audit_trail": "STUB_AGENT: Settlement SETA6FB4A0945 has empty UTR. Cannot link to bank record."
     },
     {
-      "txn_id": "TXN16E6AFCAE5",
+      "txn_id": "TXNC8736CE11C",
       "match_status": "UNMATCHED",
       "confidence_score": 0.0,
       "matched_against": [
-        "SET2A53915814"
+        "SET6105945F54"
       ],
-      "audit_trail": "STUB_AGENT: Settlement SET2A53915814 has empty UTR. Cannot link to bank record."
+      "audit_trail": "STUB_AGENT: Settlement SET6105945F54 has empty UTR. Cannot link to bank record."
     },
     {
-      "txn_id": "TXNBD93DC525A",
+      "txn_id": "TXN8B8BD37A0C",
       "match_status": "REVIEW_REQUIRED",
       "confidence_score": 0.8,
       "matched_against": [
-        "SETEB8D826955",
-        "UTR93C5AFD16ACA"
+        "SET39BE7F9D4E",
+        "UTRDCFA01AE75B1"
       ],
       "audit_trail": "STUB_AGENT: Partial refund detected. Settlement is 44.1% of ledger (₹6367.05 vs ₹14446.94). REVIEW_REQUIRED (confidence=0.8)."
     },
     {
-      "txn_id": "TXN0C028D39E5",
+      "txn_id": "TXN6075A884E9",
       "match_status": "REVIEW_REQUIRED",
       "confidence_score": 0.8,
       "matched_against": [
-        "SET57A2A4A770",
-        "UTR75F9AB15C990"
+        "SETA6AFDF9ED4",
+        "UTRD5B0DD644380"
       ],
       "audit_trail": "STUB_AGENT: Partial refund detected. Settlement is 45.0% of ledger (₹14359.8 vs ₹31894.78). REVIEW_REQUIRED (confidence=0.8)."
     },
     {
-      "txn_id": "TXN85BFE5450D",
+      "txn_id": "TXNE8C21BCA45",
       "match_status": "REVIEW_REQUIRED",
       "confidence_score": 0.8,
       "matched_against": [
-        "SET2613D15E93",
-        "UTR0398DE32B886"
+        "SET50A916BDE7",
+        "UTRD1A89CC6B8CB"
       ],
       "audit_trail": "STUB_AGENT: Partial refund detected. Settlement is 48.5% of ledger (₹22032.18 vs ₹45453.87). REVIEW_REQUIRED (confidence=0.8)."
     },
     {
-      "txn_id": "TXN428BCCF424",
+      "txn_id": "TXN0615C54DBB",
       "match_status": "UNMATCHED",
       "confidence_score": 0.0,
       "matched_against": [],
       "audit_trail": "STUB_AGENT: No gateway settlement record found."
     },
     {
-      "txn_id": "TXNAEC972138E",
+      "txn_id": "TXN2EA5E4B5D1",
       "match_status": "UNMATCHED",
       "confidence_score": 0.0,
       "matched_against": [],
       "audit_trail": "STUB_AGENT: No gateway settlement record found."
     },
     {
-      "txn_id": "TXN2C02A96860",
+      "txn_id": "TXNECB48BF6F8",
       "match_status": "UNMATCHED",
       "confidence_score": 0.0,
       "matched_against": [],
       "audit_trail": "STUB_AGENT: No gateway settlement record found."
     }
   ],
-  "generated_at": "2026-08-23T14:02:16.880707",
-  "elapsed_seconds": 0.00843329995404929
+  "generated_at": "2026-08-23T15:53:06.659461",
+  "elapsed_seconds": 0.008165500010363758
 }
