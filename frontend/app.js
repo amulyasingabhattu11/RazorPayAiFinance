@@ -6,6 +6,8 @@ const state = {
   query: "",
   priority: "ALL",
   breakType: "ALL",
+  status: "ALL",
+  confidence: "ALL",
   selectedKey: null,
 };
 
@@ -182,6 +184,11 @@ function getRows() {
     if (state.view === "exceptions") {
       if (state.priority !== "ALL" && row.priority !== state.priority) return false;
       if (state.breakType !== "ALL" && row.break_type !== state.breakType) return false;
+    } else {
+      if (state.status !== "ALL" && row.match_status !== state.status) return false;
+      if (state.confidence === "EXACT" && Number(row.confidence_score ?? 0) !== 1) return false;
+      if (state.confidence === "TOLERANCE" && Number(row.confidence_score ?? 0) !== 0.9) return false;
+      if (state.confidence === "AGENT" && Number(row.confidence_score ?? 0) >= 0.9) return false;
     }
 
     if (!query) return true;
@@ -195,10 +202,7 @@ function renderTable() {
   const isAudit = state.view === "audit";
   els.tableTitle.textContent = isExceptions ? "Exceptions" : isAudit ? "Audit trail" : "Match results";
   els.rowCount.textContent = `${rows.length} rows`;
-  els.typeFilter.disabled = !isExceptions;
-  els.priorityFilter.querySelectorAll("button").forEach((button) => {
-    button.disabled = !isExceptions;
-  });
+  renderFilters();
 
   els.tableHead.innerHTML = isExceptions
     ? `<tr><th>Exception</th><th>Transaction</th><th>Priority</th><th>Break type</th><th>Root cause</th></tr>`
@@ -235,6 +239,43 @@ function renderTable() {
       `;
     })
     .join("");
+}
+
+function renderFilters() {
+  if (state.view === "exceptions") {
+    const priorityOptions = [
+      ["ALL", "All"],
+      ["HIGH", "High"],
+      ["MEDIUM", "Medium"],
+      ["LOW", "Low"],
+    ];
+    els.priorityFilter.setAttribute("aria-label", "Priority filter");
+    els.priorityFilter.innerHTML = priorityOptions
+      .map(([value, label]) => `<button class="${state.priority === value ? "is-active" : ""}" type="button" data-filter="${value}">${label}</button>`)
+      .join("");
+    hydrateBreakTypes();
+    els.typeFilter.value = state.breakType;
+    return;
+  }
+
+  const statusOptions = [
+    ["ALL", "All"],
+    ["MATCHED", "Matched"],
+    ["REVIEW_REQUIRED", "Review"],
+    ["UNMATCHED", "Unmatched"],
+  ];
+  els.priorityFilter.setAttribute("aria-label", "Status filter");
+  els.priorityFilter.innerHTML = statusOptions
+    .map(([value, label]) => `<button class="${state.status === value ? "is-active" : ""}" type="button" data-filter="${value}">${label}</button>`)
+    .join("");
+
+  els.typeFilter.innerHTML = `
+    <option value="ALL">All confidence</option>
+    <option value="EXACT">Exact matches</option>
+    <option value="TOLERANCE">Tolerance matches</option>
+    <option value="AGENT">Agent decisions</option>
+  `;
+  els.typeFilter.value = state.confidence;
 }
 
 function renderDetail() {
@@ -337,8 +378,12 @@ els.searchInput.addEventListener("input", (event) => {
 
 els.priorityFilter.addEventListener("click", (event) => {
   const button = event.target.closest("button[data-filter]");
-  if (!button || button.disabled) return;
-  state.priority = button.dataset.filter;
+  if (!button) return;
+  if (state.view === "exceptions") {
+    state.priority = button.dataset.filter;
+  } else {
+    state.status = button.dataset.filter;
+  }
   els.priorityFilter.querySelectorAll("button").forEach((item) => {
     item.classList.toggle("is-active", item === button);
   });
@@ -346,7 +391,11 @@ els.priorityFilter.addEventListener("click", (event) => {
 });
 
 els.typeFilter.addEventListener("change", (event) => {
-  state.breakType = event.target.value;
+  if (state.view === "exceptions") {
+    state.breakType = event.target.value;
+  } else {
+    state.confidence = event.target.value;
+  }
   renderTable();
 });
 
@@ -354,11 +403,9 @@ els.clearFilters.addEventListener("click", () => {
   state.query = "";
   state.priority = "ALL";
   state.breakType = "ALL";
+  state.status = "ALL";
+  state.confidence = "ALL";
   els.searchInput.value = "";
-  els.typeFilter.value = "ALL";
-  els.priorityFilter.querySelectorAll("button").forEach((button) => {
-    button.classList.toggle("is-active", button.dataset.filter === "ALL");
-  });
   renderTable();
 });
 
