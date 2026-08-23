@@ -1,0 +1,10 @@
+# Ignore sensitive environment variables
+.env
+
+# Ignore node modules / virtual environments
+node_modules/
+venv/
+
+# Ignore log files and OS specific files
+*.log
+.DS_Store
