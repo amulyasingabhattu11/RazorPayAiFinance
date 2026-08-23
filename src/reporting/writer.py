@@ -403,7 +403,7 @@ def write_markdown_report(
             f"**Break Type:** `{worked_example.break_type.value}`  ",
             f"**Priority:** `{worked_example.priority.value}`  ",
             f"**Agent Status:** `{mr.match_status.value if mr else 'N/A'}`  ",
-            f"**Confidence:** `{mr.confidence_score:.2f} if mr else 'N/A'`  ",
+            f"**Confidence:** `{f'{mr.confidence_score:.2f}' if mr else 'N/A'}`  ",
             "",
             f"**Root Cause Hypothesis:**",
             f"> {worked_example.root_cause_hypothesis}",
