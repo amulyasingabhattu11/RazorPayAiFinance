@@ -46,6 +46,36 @@ from src.matching.deterministic import RecordIndex
 
 MATCH_THRESHOLD = float(os.getenv("AGENT_MATCH_THRESHOLD", "0.90"))
 REVIEW_THRESHOLD = float(os.getenv("AGENT_REVIEW_THRESHOLD", "0.70"))
+PLACEHOLDER_KEY_PREFIX = "sk-..."
+
+
+def resolve_agent_mode(requested_mode: str = "auto") -> Tuple[bool, str, str]:
+    """
+    Resolve requested mode into (use_llm, mode_label, model).
+
+    auto uses LLM only when OPENAI_API_KEY is present and not the placeholder.
+    llm requires a real OPENAI_API_KEY. stub always uses offline heuristics.
+    """
+    requested = (requested_mode or "auto").lower()
+    api_key = os.getenv("OPENAI_API_KEY", "")
+    model = os.getenv("OPENAI_MODEL", "gpt-4o-mini")
+    has_real_key = bool(api_key and not api_key.startswith(PLACEHOLDER_KEY_PREFIX))
+
+    if requested == "stub":
+        return False, "STUB (heuristic)", model
+    if requested == "llm":
+        if not has_real_key:
+            raise ValueError(
+                "--mode llm requires OPENAI_API_KEY to be set to a real key. "
+                "Use --mode stub or --mode auto for offline heuristic mode."
+            )
+        return True, f"LLM ({model})", model
+    if requested != "auto":
+        raise ValueError(f"Unknown agent mode: {requested_mode}")
+
+    if has_real_key:
+        return True, f"LLM ({model})", model
+    return False, "STUB (heuristic)", model
 
 
 # ---------------------------------------------------------------------------
@@ -489,6 +519,11 @@ Please:
     # If we have no verdict result yet, fall back to stub
     if verdict_result is None:
         verdict_result, stub_excs = _stub_reason(txn, index, exc_id)
+        verdict_result.audit_trail = verdict_result.audit_trail.replace(
+            "STUB_AGENT:",
+            "LLM_AGENT_FALLBACK_STUB:",
+            1,
+        )
         exceptions.extend(stub_excs)
 
     return verdict_result, exceptions
@@ -544,6 +579,7 @@ def run_agent_pass(
     needs_agent: List[TransactionRecord],
     index: RecordIndex,
     exc_counter_start: int = 0,
+    mode: str = "auto",
 ) -> Tuple[List[MatchResult], List[ExceptionCase]]:
     """
     Run the reasoning agent over all records that the deterministic pass
@@ -552,8 +588,7 @@ def run_agent_pass(
     Returns (results, exceptions).
     """
     api_key = os.getenv("OPENAI_API_KEY", "")
-    model = os.getenv("OPENAI_MODEL", "gpt-4o-mini")
-    use_llm = bool(api_key and not api_key.startswith("sk-..."))
+    use_llm, mode_label, model = resolve_agent_mode(mode)
 
     if use_llm:
         try:

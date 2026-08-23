@@ -112,10 +112,16 @@ class RunReport(BaseModel):
     total_records: int
     matched_count: int
     review_required_count: int
+    # exception_count = UNMATCHED records only (true exceptions per spec §4 / §7)
     exception_count: int
+    # review_and_exception_case_count = len(exceptions list) = REVIEW_REQUIRED + UNMATCHED
+    # This is the total number of records in the Exception & Review Register.
+    review_and_exception_case_count: int = 0
     match_rate_pct: float
     review_required_rate_pct: float
     exception_rate_pct: float
+    # Agent mode used for this run: e.g. "STUB (heuristic)" or "LLM (gpt-4o-mini)"
+    agent_mode: str = "STUB (heuristic)"
     # Ground-truth scoring (only available when running on synthetic data)
     ground_truth_matched: Optional[int] = None
     ground_truth_review: Optional[int] = None

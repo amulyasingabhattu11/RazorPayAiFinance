@@ -12,6 +12,11 @@ Ground-truth scoring:
   - Precision = TP / (TP + FP)  where TP = correctly MATCHED
   - Recall    = TP / (TP + FN)  where FN = should-be-MATCHED but wasn't
   - False-match rate = FP / total_actual_positives
+
+Exception count terminology (per spec §4 / §7):
+  - exception_count                  = UNMATCHED records only (true exceptions)
+  - review_and_exception_case_count  = len(exceptions list) = UNMATCHED + REVIEW_REQUIRED
+    (the full "Exception & Review Register" — every record with a root-cause case)
 """
 from __future__ import annotations
 
@@ -111,6 +116,7 @@ def build_run_report(
     ground_truth: Optional[Dict[str, MatchStatus]],
     elapsed_seconds: float,
     exception_stats: Dict,
+    agent_mode: str = "STUB (heuristic)",
 ) -> RunReport:
     matched = [r for r in match_results if r.match_status == MatchStatus.MATCHED]
     review = [r for r in match_results if r.match_status == MatchStatus.REVIEW_REQUIRED]
@@ -139,15 +145,19 @@ def build_run_report(
         gt_review = sum(1 for v in ground_truth.values() if v == MatchStatus.REVIEW_REQUIRED)
         gt_unmatched = sum(1 for v in ground_truth.values() if v == MatchStatus.UNMATCHED)
 
+    # exception_count = UNMATCHED only (spec §4 definition of "exception")
+    # review_and_exception_case_count = full exception register list (UNMATCHED + REVIEW_REQUIRED)
     return RunReport(
         run_id=f"RUN-{uuid.uuid4().hex[:8].upper()}",
         total_records=total,
         matched_count=len(matched),
         review_required_count=len(review),
         exception_count=len(unmatched),
+        review_and_exception_case_count=len(exceptions),
         match_rate_pct=match_rate_pct,
         review_required_rate_pct=review_rate_pct,
         exception_rate_pct=exception_rate_pct,
+        agent_mode=agent_mode,
         ground_truth_matched=gt_matched,
         ground_truth_review=gt_review,
         ground_truth_unmatched=gt_unmatched,
@@ -169,12 +179,11 @@ def build_run_report(
 def render_console(report: RunReport, exception_stats: Dict) -> None:
     try:
         from rich.console import Console
-        from rich.panel import Panel
-        from rich.table import Table
-        from rich import box
-        console = Console()
+        # force_terminal=True + legacy_windows=False avoids the cp1252 legacy path
+        # on older Windows consoles that don't support Unicode box-drawing chars.
+        console = Console(legacy_windows=False)
         _render_rich(console, report, exception_stats)
-    except ImportError:
+    except (ImportError, UnicodeEncodeError):
         _render_plain(report, exception_stats)
 
 
@@ -186,7 +195,23 @@ def _render_rich(console, report: RunReport, exception_stats: Dict) -> None:
 
     console.print()
     console.rule("[bold cyan]AI Finance Controller — Run Report[/bold cyan]")
-    console.print(f"[dim]Run ID: {report.run_id}   Generated: {report.generated_at.strftime('%Y-%m-%d %H:%M:%S UTC')}[/dim]")
+    console.print(
+        f"[dim]Run ID: {report.run_id}   "
+        f"Generated: {report.generated_at.strftime('%Y-%m-%d %H:%M:%S UTC')}[/dim]"
+    )
+
+    # Agent mode badge — prominent, not buried
+    is_stub = "STUB" in report.agent_mode.upper()
+    if is_stub:
+        console.print(
+            f"[bold yellow][!] Agent mode: {report.agent_mode}"
+            "  -- deterministic heuristics, NO live LLM calls[/bold yellow]"
+        )
+    else:
+        console.print(
+            f"[bold green][+] Agent mode: {report.agent_mode}"
+            "  -- live LLM reasoning[/bold green]"
+        )
     console.print()
 
     # ---- KPI summary table ----
@@ -199,22 +224,27 @@ def _render_rich(console, report: RunReport, exception_stats: Dict) -> None:
     kpi.add_row(
         "Auto-Matched (MATCHED)",
         f"[green]{report.matched_count}[/green]",
-        f"{report.ground_truth_matched or '—'}",
+        f"{report.ground_truth_matched or '-'}",
     )
     kpi.add_row(
         "Review Required",
         f"[yellow]{report.review_required_count}[/yellow]",
-        f"{report.ground_truth_review or '—'}",
+        f"{report.ground_truth_review or '-'}",
     )
     kpi.add_row(
-        "Unmatched (Exceptions)",
+        "Unmatched Exceptions (UNMATCHED)",
         f"[red]{report.exception_count}[/red]",
-        f"{report.ground_truth_unmatched or '—'}",
+        f"{report.ground_truth_unmatched or '-'}",
+    )
+    kpi.add_row(
+        "Exception & Review Register (total)",
+        f"[magenta]{report.review_and_exception_case_count}[/magenta]",
+        f"({report.exception_count} UNMATCHED + {report.review_required_count} REVIEW_REQUIRED)",
     )
     kpi.add_row("", "", "")
     kpi.add_row("Auto-Match Rate", f"[green]{report.match_rate_pct:.1f}%[/green]", "")
     kpi.add_row("Review-Required Rate", f"[yellow]{report.review_required_rate_pct:.1f}%[/yellow]", "")
-    kpi.add_row("Exception Rate", f"[red]{report.exception_rate_pct:.1f}%[/red]", "")
+    kpi.add_row("Exception Rate (UNMATCHED)", f"[red]{report.exception_rate_pct:.1f}%[/red]", "")
     kpi.add_row("", "", "")
     if report.precision is not None:
         kpi.add_row("Precision (vs GT)", f"{report.precision:.1%}", "")
@@ -227,7 +257,7 @@ def _render_rich(console, report: RunReport, exception_stats: Dict) -> None:
 
     # ---- Exception breakdown ----
     if exception_stats.get("break_type_distribution"):
-        bt_table = Table(title="Exception Breakdown", box=box.SIMPLE_HEAD)
+        bt_table = Table(title="Exception & Review Breakdown", box=box.SIMPLE_HEAD)
         bt_table.add_column("Break Type")
         bt_table.add_column("Count", justify="right")
         for bt, count in sorted(
@@ -237,13 +267,15 @@ def _render_rich(console, report: RunReport, exception_stats: Dict) -> None:
             bt_table.add_row(bt, str(count))
         console.print(bt_table)
         console.print(
-            f"Root-cause coverage: [bold]{exception_stats.get('root_cause_coverage_pct', 100):.1f}%[/bold] of exceptions have a hypothesis\n"
+            f"Root-cause coverage: [bold]{exception_stats.get('root_cause_coverage_pct', 100):.1f}%[/bold]"
+            " of exception & review cases have a hypothesis\n"
         )
 
-    # ---- Exception list ----
+    # ---- Exception & Review Register ----
     if report.exceptions:
         exc_table = Table(
-            title="Exception List (sorted by priority)",
+            title=f"Exception & Review Register - {report.review_and_exception_case_count} cases"
+                  f"  ({report.exception_count} UNMATCHED + {report.review_required_count} REVIEW_REQUIRED)",
             box=box.SIMPLE_HEAD,
             show_lines=True,
         )
@@ -262,12 +294,15 @@ def _render_rich(console, report: RunReport, exception_stats: Dict) -> None:
                 exc.txn_id,
                 f"[{color}]{exc.priority.value}[/{color}]",
                 exc.break_type.value,
-                exc.root_cause_hypothesis[:100] + "…"
+                exc.root_cause_hypothesis[:100] + "..."
                 if len(exc.root_cause_hypothesis) > 100
                 else exc.root_cause_hypothesis,
             )
         if len(report.exceptions) > 30:
-            console.print(f"[dim](Showing 30 of {len(report.exceptions)} exceptions — see audit_report.md for full list)[/dim]")
+            console.print(
+                f"[dim](Showing 30 of {len(report.exceptions)} cases — "
+                "see audit_report.md for full list)[/dim]"
+            )
         console.print(exc_table)
 
     console.rule()
@@ -276,16 +311,21 @@ def _render_rich(console, report: RunReport, exception_stats: Dict) -> None:
 def _render_plain(report: RunReport, exception_stats: Dict) -> None:
     """Fallback renderer for environments without rich installed."""
     print("\n" + "=" * 70)
-    print("  AI Finance Controller — Run Report")
+    print("  AI Finance Controller -- Run Report")
     print("=" * 70)
     print(f"  Run ID    : {report.run_id}")
     print(f"  Generated : {report.generated_at.strftime('%Y-%m-%d %H:%M:%S UTC')}")
     print(f"  Elapsed   : {report.elapsed_seconds:.2f}s")
+    is_stub = "STUB" in report.agent_mode.upper()
+    mode_note = "  [deterministic heuristics, NO live LLM calls]" if is_stub else "  [live LLM reasoning]"
+    print(f"  Agent mode: {report.agent_mode}{mode_note}")
     print()
     print(f"  Total Records     : {report.total_records}")
     print(f"  MATCHED           : {report.matched_count}  ({report.match_rate_pct:.1f}%)")
     print(f"  REVIEW_REQUIRED   : {report.review_required_count}  ({report.review_required_rate_pct:.1f}%)")
     print(f"  UNMATCHED         : {report.exception_count}  ({report.exception_rate_pct:.1f}%)")
+    print(f"  Exception & Review Register : {report.review_and_exception_case_count}  "
+          f"({report.exception_count} UNMATCHED + {report.review_required_count} REVIEW_REQUIRED)")
     if report.precision is not None:
         print()
         print(f"  Precision         : {report.precision:.1%}")
@@ -297,7 +337,7 @@ def _render_plain(report: RunReport, exception_stats: Dict) -> None:
     print(f"  GT REVIEW         : {report.ground_truth_review}")
     print(f"  GT UNMATCHED      : {report.ground_truth_unmatched}")
     print()
-    print("  Exceptions:")
+    print(f"  Exception & Review Register ({report.review_and_exception_case_count} cases):")
     for exc in report.exceptions[:20]:
         print(f"    [{exc.priority.value:6s}] {exc.txn_id} — {exc.break_type.value}")
     print("=" * 70)
@@ -323,11 +363,28 @@ def write_markdown_report(
     os.makedirs(output_dir, exist_ok=True)
     path = os.path.join(output_dir, "audit_report.md")
 
+    is_stub = "STUB" in report.agent_mode.upper()
+    mode_badge = (
+        f"⚠ **STUB MODE** — deterministic heuristics, no live LLM calls"
+        if is_stub
+        else f"✓ **LLM MODE** — live OpenAI reasoning ({report.agent_mode})"
+    )
+    mode_note = (
+        "_Results are deterministic Python heuristics. To use the live LLM reasoning "
+        "path, set `OPENAI_API_KEY` to a real key and run `python main.py --mode llm`._"
+        if is_stub
+        else "_Results use live LLM function-calling. For a reproducible offline run "
+        "use `python main.py --mode stub`._"
+    )
+
     lines = [
         "# AI Finance Controller — Audit Report",
         f"**Run ID:** `{report.run_id}`  ",
         f"**Generated:** {report.generated_at.strftime('%Y-%m-%d %H:%M:%S UTC')}  ",
-        f"**Elapsed:** {report.elapsed_seconds:.2f}s",
+        f"**Elapsed:** {report.elapsed_seconds:.2f}s  ",
+        f"**Agent mode:** {mode_badge}  ",
+        "",
+        f"> {mode_note}",
         "",
         "---",
         "",
@@ -338,7 +395,8 @@ def write_markdown_report(
         f"| Total Records | {report.total_records} | — |",
         f"| MATCHED | {report.matched_count} ({report.match_rate_pct:.1f}%) | {report.ground_truth_matched or '—'} |",
         f"| REVIEW_REQUIRED | {report.review_required_count} ({report.review_required_rate_pct:.1f}%) | {report.ground_truth_review or '—'} |",
-        f"| UNMATCHED | {report.exception_count} ({report.exception_rate_pct:.1f}%) | {report.ground_truth_unmatched or '—'} |",
+        f"| UNMATCHED (Exceptions) | {report.exception_count} ({report.exception_rate_pct:.1f}%) | {report.ground_truth_unmatched or '—'} |",
+        f"| Exception & Review Register | {report.review_and_exception_case_count} total | {report.exception_count} UNMATCHED + {report.review_required_count} REVIEW_REQUIRED |",
         f"| Precision | {f'{report.precision:.1%}' if report.precision is not None else '—'} | — |",
         f"| Recall | {f'{report.recall:.1%}' if report.recall is not None else '—'} | — |",
         f"| False-Match Rate | {f'{report.false_match_rate:.1%}' if report.false_match_rate is not None else '—'} | — |",
@@ -346,7 +404,11 @@ def write_markdown_report(
         "",
         "---",
         "",
-        "## Exception Breakdown",
+        "## Exception & Review Breakdown",
+        "",
+        "> **Note:** `exception_count` (12) = UNMATCHED records only — true exceptions per spec §4.  ",
+        "> `review_and_exception_case_count` (register total) = UNMATCHED + REVIEW_REQUIRED cases,  ",
+        "> i.e., every record with a logged root-cause hypothesis held for human sign-off.",
         "",
         "| Break Type | Count |",
         "|-----------|-------|",
@@ -358,11 +420,14 @@ def write_markdown_report(
         lines.append(f"| {bt} | {count} |")
     lines += [
         "",
-        f"**Root-cause coverage:** {exception_stats.get('root_cause_coverage_pct', 100):.1f}% of exceptions have a hypothesis.",
+        f"**Root-cause coverage:** {exception_stats.get('root_cause_coverage_pct', 100):.1f}% of cases have a hypothesis.",
         "",
         "---",
         "",
-        "## Full Exception List",
+        f"## Exception & Review Register ({report.review_and_exception_case_count} cases)",
+        "",
+        f"_{report.exception_count} UNMATCHED (true exceptions) + "
+        f"{report.review_required_count} REVIEW_REQUIRED (held for human sign-off)._",
         "",
         "| ID | Txn ID | Priority | Break Type | Root Cause Hypothesis |",
         "|----|--------|----------|------------|----------------------|",
@@ -398,6 +463,17 @@ def write_markdown_report(
             (r for r in report.match_results if r.txn_id == worked_example.txn_id),
             None,
         )
+        # Determine whether this was LLM or stub
+        reasoning_note = ""
+        if mr and mr.audit_trail:
+            if mr.audit_trail.startswith("LLM_AGENT"):
+                reasoning_note = "_This decision was made by the live LLM reasoning agent._"
+            elif mr.audit_trail.startswith("STUB_AGENT"):
+                reasoning_note = (
+                    "_This decision was made by the deterministic stub heuristic "
+                    "(not live LLM). Re-run with `--mode llm` for LLM reasoning._"
+                )
+
         lines += [
             f"**Transaction:** `{worked_example.txn_id}`  ",
             f"**Break Type:** `{worked_example.break_type.value}`  ",
@@ -409,10 +485,15 @@ def write_markdown_report(
             f"> {worked_example.root_cause_hypothesis}",
             "",
             "**Audit Trail:**",
-            f"```",
+            "```",
             f"{mr.audit_trail if mr else 'N/A'}",
             "```",
             "",
+        ]
+        if reasoning_note:
+            lines += [f"{reasoning_note}", ""]
+
+        lines += [
             "**Why this matters:** A naive matcher might have forced this to MATCHED",
             "because the amounts or IDs are *close*. The agent correctly deferred,",
             "ensuring this record surfaces for human review rather than silently",

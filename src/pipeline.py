@@ -11,13 +11,15 @@ Wires all five stages together:
 Usage:
     from src.pipeline import run_pipeline
     report = run_pipeline(seed=42)
+    report = run_pipeline(seed=42, mode="stub")
+    report = run_pipeline(seed=42, mode="llm")
 """
 from __future__ import annotations
 
 import time
 from typing import Dict, List, Optional
 
-from src.agent.reasoning import run_agent_pass
+from src.agent.reasoning import resolve_agent_mode, run_agent_pass
 from src.data.generator import generate_dataset
 from src.data.models import MatchResult, MatchStatus, RunReport
 from src.matching.classifier import classify_all_exceptions
@@ -34,13 +36,43 @@ def run_pipeline(
     seed: int = 42,
     output_dir: str = "output",
     verbose: bool = True,
+    mode: str = "auto",
 ) -> RunReport:
     """
     Execute the full reconciliation pipeline.
 
+    Args:
+        seed:       Random seed for synthetic data (default 42, keeps runs deterministic).
+        output_dir: Directory for report files (default "output/").
+        verbose:    Print stage-by-stage progress to the console.
+        mode:       Agent reasoning mode — "auto", "llm", or "stub".
+                    "auto" uses LLM when OPENAI_API_KEY is present, stub otherwise.
+                    "llm" requires a real OPENAI_API_KEY.
+                    "stub" always uses deterministic heuristics (no API calls).
+
     Returns the assembled RunReport (also written to output/).
     """
     wall_start = time.perf_counter()
+
+    # ------------------------------------------------------------------
+    # Resolve agent mode early so we can print the banner upfront
+    # ------------------------------------------------------------------
+    try:
+        use_llm, mode_label, model = resolve_agent_mode(mode)
+    except ValueError as e:
+        print(f"\n[ERROR]  {e}")
+        raise SystemExit(1)
+
+    if verbose:
+        print("\n" + "=" * 64)
+        print(f"  AI Finance Controller -- RazorPay Hackathon Track 04")
+        if use_llm:
+            print(f"  Agent mode : LLM ({model})  [live OpenAI reasoning]")
+        else:
+            print(f"  Agent mode : STUB (heuristic)  [deterministic Python rules,")
+            print(f"               NO live LLM calls. Set OPENAI_API_KEY and use")
+            print(f"               --mode llm (or --mode auto) for real LLM reasoning.]")
+        print("=" * 64)
 
     # ------------------------------------------------------------------
     # Stage 1: Load data
@@ -77,14 +109,16 @@ def run_pipeline(
     # ------------------------------------------------------------------
     # Stage 3: Agent pass over ambiguous records
     # ------------------------------------------------------------------
+    agent_mode_tag = "LLM" if use_llm else "STUB"
     if verbose:
-        print(f"\n[3/5] Running reasoning agent over {len(det_result.needs_agent)} records…")
+        print(f"\n[3/5] Running reasoning agent [{agent_mode_tag}] over {len(det_result.needs_agent)} records…")
 
     exc_counter_start = len(det_result.immediate_exceptions)
     agent_results, agent_exceptions = run_agent_pass(
         det_result.needs_agent,
         index,
         exc_counter_start=exc_counter_start,
+        mode=mode,
     )
 
     if verbose:
@@ -112,8 +146,9 @@ def run_pipeline(
     )
 
     if verbose:
-        print(f"      Total exceptions     : {len(all_exceptions)}")
-        print(f"      Root-cause coverage  : {exception_stats.get('root_cause_coverage_pct', 0):.1f}%")
+        print(f"      Total exception register  : {len(all_exceptions)}  "
+              f"(UNMATCHED + REVIEW_REQUIRED with root-cause)")
+        print(f"      Root-cause coverage       : {exception_stats.get('root_cause_coverage_pct', 0):.1f}%")
 
     # ------------------------------------------------------------------
     # Stage 5: Build report + write outputs
@@ -129,6 +164,7 @@ def run_pipeline(
         ground_truth=ground_truth,
         elapsed_seconds=elapsed,
         exception_stats=exception_stats,
+        agent_mode=mode_label,
     )
 
     # Write files
@@ -136,8 +172,8 @@ def run_pipeline(
     md_path = write_markdown_report(report, exception_stats, output_dir)
 
     if verbose:
-        print(f"      JSON report   → {json_path}")
-        print(f"      Audit report  → {md_path}")
+        print(f"      JSON report   -> {json_path}")
+        print(f"      Audit report  -> {md_path}")
 
     # Render console report
     render_console(report, exception_stats)

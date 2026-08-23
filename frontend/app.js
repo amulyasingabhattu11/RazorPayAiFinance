@@ -118,15 +118,34 @@ function renderHeader() {
   const report = state.report;
   els.runId.textContent = report.run_id;
   els.generatedAt.textContent = formatDate(report.generated_at);
+
+  // Agent mode badge — surface prominently so nobody mistakes stub for LLM output
+  const agentMode = report.agent_mode || "STUB (heuristic)";
+  const isStub = agentMode.toUpperCase().includes("STUB");
+  const modeEl = document.querySelector("#agentModeBadge");
+  if (modeEl) {
+    modeEl.textContent = isStub
+      ? `⚠ ${agentMode} — no live LLM calls`
+      : `✓ ${agentMode} — live LLM reasoning`;
+    modeEl.className = "agent-badge " + (isStub ? "stub" : "llm");
+  }
 }
 
 function renderMetrics() {
   const report = state.report;
+  // exception_count = UNMATCHED only (true exceptions per spec §4)
+  // review_and_exception_case_count = full register (UNMATCHED + REVIEW_REQUIRED)
+  const registerCount = report.review_and_exception_case_count
+    ?? (report.exception_count + report.review_required_count);
+
   const metrics = [
     ["Total records", formatNumber(report.total_records), `Processed in ${Number(report.elapsed_seconds ?? 0).toFixed(3)}s`],
     ["Matched", formatNumber(report.matched_count), `${formatPercent(report.match_rate_pct)} auto-match`],
-    ["Review required", formatNumber(report.review_required_count), `${formatPercent(report.review_required_rate_pct)} held`],
-    ["Exceptions", formatNumber(report.exception_count), `${formatPercent(report.exception_rate_pct)} unresolved`],
+    ["Review required", formatNumber(report.review_required_count), `${formatPercent(report.review_required_rate_pct)} held for sign-off`],
+    // Tile shows UNMATCHED-only count (12) — the true exception count per spec
+    ["Unmatched exceptions", formatNumber(report.exception_count), `${formatPercent(report.exception_rate_pct)} unresolved`],
+    // Second tile shows the full register (25 = 12 UNMATCHED + 13 REVIEW_REQUIRED)
+    ["Exception & review register", formatNumber(registerCount), `${report.exception_count} unmatched + ${report.review_required_count} review`],
     ["Precision", formatPercent((report.precision ?? 0) * 100), "Ground-truth scored"],
     ["Recall", formatPercent((report.recall ?? 0) * 100), "Synthetic benchmark"],
     ["False match rate", formatPercent((report.false_match_rate ?? 0) * 100), "Force-match guardrail"],
@@ -147,7 +166,7 @@ function renderMetrics() {
   els.scoreRing.style.setProperty("--score", `${degrees}deg`);
   els.scoreValue.textContent = formatPercent(report.match_rate_pct);
   els.scoreSummary.textContent = `${report.matched_count} of ${report.total_records} records auto-matched`;
-  els.scoreDetail.textContent = `${report.review_required_count} review items, ${report.exception_count} exceptions`;
+  els.scoreDetail.textContent = `${report.review_required_count} review items, ${report.exception_count} unmatched exceptions`;
 }
 
 function renderBreakdown() {
@@ -158,7 +177,9 @@ function renderBreakdown() {
 
   const rows = [...counts.entries()].sort((a, b) => b[1] - a[1]);
   const max = Math.max(...rows.map(([, count]) => count), 1);
-  els.exceptionTotal.textContent = `${rows.reduce((sum, [, count]) => sum + count, 0)} cases`;
+  const registerTotal = rows.reduce((sum, [, count]) => sum + count, 0);
+  // Show the full register count (UNMATCHED + REVIEW_REQUIRED), not just UNMATCHED
+  els.exceptionTotal.textContent = `${registerTotal} cases`;
   els.breakdownBars.innerHTML = rows
     .map(([type, count], index) => {
       const colors = ["#2364aa", "#b42318", "#137a4b", "#a85b00", "#0f766e"];
@@ -200,7 +221,22 @@ function renderTable() {
   const rows = getRows();
   const isExceptions = state.view === "exceptions";
   const isAudit = state.view === "audit";
-  els.tableTitle.textContent = isExceptions ? "Exceptions" : isAudit ? "Audit trail" : "Match results";
+
+  if (isExceptions) {
+    // "Exception & Review Register (25 rows)" — not just "Exceptions"
+    const report = state.report;
+    const registerCount = report
+      ? (report.review_and_exception_case_count ?? report.exceptions?.length ?? 0)
+      : 0;
+    const unmatchedCount = report ? (report.exception_count ?? 0) : 0;
+    const reviewCount = report ? (report.review_required_count ?? 0) : 0;
+    els.tableTitle.textContent = `Exception & Review Register`;
+    els.tableTitle.title =
+      `${registerCount} total = ${unmatchedCount} UNMATCHED (exceptions) + ${reviewCount} REVIEW_REQUIRED`;
+  } else {
+    els.tableTitle.textContent = isAudit ? "Audit trail" : "Match results";
+    els.tableTitle.title = "";
+  }
   els.rowCount.textContent = `${rows.length} rows`;
   renderFilters();
 

@@ -982,3 +982,27 @@ tbody tr.is-selected {
     grid-template-columns: 1fr;
   }
 }
+
+
+/* ---- Agent mode badge ---- */
+.agent-badge {
+  display: inline-block;
+  margin-top: 6px;
+  padding: 3px 10px;
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+}
+
+.agent-badge.stub {
+  background: #fff3cd;
+  color: #7a5800;
+  border: 1px solid #f5c842;
+}
+
+.agent-badge.llm {
+  background: #d1fae5;
+  color: #065f46;
+  border: 1px solid #34d399;
+}

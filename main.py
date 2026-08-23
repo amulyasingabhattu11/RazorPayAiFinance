@@ -3,10 +3,13 @@ AI Finance Controller — CLI Entry Point
 RazorPay Hackathon Track 04
 
 Usage:
-    python main.py                     # run with default seed=42
-    python main.py --seed 123          # custom seed
-    python main.py --no-verbose        # quiet mode
-    python main.py --output-dir ./out  # custom output directory
+    python main.py                         # run with default seed=42 (auto-detect mode)
+    python main.py --seed 123              # custom seed
+    python main.py --mode stub             # force stub/heuristic mode (no LLM)
+    python main.py --mode llm              # force LLM mode (requires OPENAI_API_KEY)
+    python main.py --mode auto             # auto-detect based on OPENAI_API_KEY (default)
+    python main.py --no-verbose            # quiet mode
+    python main.py --output-dir ./out      # custom output directory
 """
 from __future__ import annotations
 
@@ -46,6 +49,17 @@ def main() -> None:
         action="store_true",
         help="Suppress stage-by-stage progress output",
     )
+    parser.add_argument(
+        "--mode",
+        choices=["auto", "llm", "stub"],
+        default="auto",
+        help=(
+            "Agent reasoning mode: "
+            "'auto' (default) uses LLM when OPENAI_API_KEY is present, otherwise stub; "
+            "'llm' forces LLM mode and will error if no real API key is set; "
+            "'stub' forces deterministic heuristic mode with no LLM calls."
+        ),
+    )
     args = parser.parse_args()
 
     from src.pipeline import run_pipeline
@@ -54,6 +68,7 @@ def main() -> None:
         seed=args.seed,
         output_dir=args.output_dir,
         verbose=not args.no_verbose,
+        mode=args.mode,
     )
 
     # Exit with non-zero code if there are HIGH priority unresolved exceptions
@@ -61,10 +76,10 @@ def main() -> None:
         1 for e in report.exceptions if e.priority.value == "HIGH"
     )
     if high_count > 0:
-        print(f"\n⚠  {high_count} HIGH-priority exceptions require attention.")
+        print(f"\n[!] {high_count} HIGH-priority exceptions require attention.")
         sys.exit(1)
     else:
-        print("\n✓ Pipeline complete. No HIGH-priority exceptions.")
+        print("\n[+] Pipeline complete. No HIGH-priority exceptions.")
         sys.exit(0)
 
 
